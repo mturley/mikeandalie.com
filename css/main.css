@@ -104,7 +104,7 @@ nav a:hover {
    ============== */
 
 .main {
-    padding: 30px 0;
+    padding: 10px 0;
 }
 
 .main article h1 {
@@ -136,7 +136,7 @@ nav a:hover {
 html {
   text-align: center;
   color: white;
-  padding-top: 100px;
+  padding-top: 40px;
   background: url(../onthelake-b.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
