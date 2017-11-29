@@ -145,12 +145,13 @@ html {
     min-height: 100%;
 }
 
+body, html {
+  height: 100%;
+  display: grid;
+}
+
 .everything {
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
 }
 
 h1 {
