@@ -143,6 +143,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
   background-position: right;
+  min-height: 100%;
 }
 
 h1 {
