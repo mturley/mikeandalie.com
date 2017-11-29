@@ -158,8 +158,33 @@ nav a:hover {
 
 
 
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway');
 
+html {
+  background: url(onthelake-b.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: right;
+}
 
+body {
+  text-align: center;
+  color: white;
+  padding-top: 120px;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 62px;
+  font-weight: normal;
+}
+
+h2, h3, h4, h5, h6, p {
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+}
 
 
 
