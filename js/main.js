@@ -5,5 +5,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById('countdown').innerHTML = ts.toHTML("h2");
     },
     countdown.DEFAULTS);
-    document.ontouchmove = function(event) { event.preventDefault(); };
 });

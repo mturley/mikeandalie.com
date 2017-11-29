@@ -136,7 +136,6 @@ nav a:hover {
 html {
   text-align: center;
   color: white;
-  padding-top: 40px;
   background: url(../onthelake-b.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -147,6 +146,7 @@ html {
 }
 
 h1 {
+  padding-top: 40px;
   font-family: 'Dancing Script', cursive;
   font-size: 62px;
   font-weight: normal;
