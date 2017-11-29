@@ -5,5 +5,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById('countdown').innerHTML = ts.toHTML("h2");
     },
     countdown.DEFAULTS);
-    alert('HEY')
+    alert(countdown)
 });
