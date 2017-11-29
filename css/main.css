@@ -159,6 +159,7 @@ h2, h3, h4, h5, h6, p {
 
 p {
     font-size: 18px;
+    margin: 18px 20px;
 }
 
 #countdown {
