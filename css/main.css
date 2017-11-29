@@ -136,7 +136,7 @@ nav a:hover {
 html {
   text-align: center;
   color: white;
-  padding-top: 120px;
+  padding-top: 100px;
   background: url(../onthelake-b.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -155,6 +155,10 @@ h1 {
 h2, h3, h4, h5, h6, p {
   font-family: 'Raleway', sans-serif;
   font-weight: normal;
+}
+
+p {
+    font-size: 18px;
 }
 
 
