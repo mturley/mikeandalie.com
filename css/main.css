@@ -146,6 +146,7 @@ html {
 }
 
 .everything {
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
