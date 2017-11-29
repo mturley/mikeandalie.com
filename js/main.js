@@ -1,2 +1,4 @@
 
-// TODO maybe delete this?  Not sure I need any scripts.
+document.addEventListener("DOMContentLoaded", function (event) {
+    timeago().render(document.querySelectorAll('#countdown'));
+});
