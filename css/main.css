@@ -145,7 +145,7 @@ html {
     min-height: 100%;
 }
 
-body {
+.everything {
     display: flex;
     flex-direction: column;
     justify-content: center;
