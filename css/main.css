@@ -145,8 +145,13 @@ html {
     min-height: 100%;
 }
 
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
-    padding-top: 30px;
     font-family: 'Dancing Script', cursive;
     font-size: 62px;
     font-weight: normal;
