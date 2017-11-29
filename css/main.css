@@ -134,27 +134,27 @@ nav a:hover {
    ========================================================================== */
 
 html {
-  text-align: center;
-  color: white;
-  background: url(../onthelake-b.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: right;
-  min-height: 100%;
+    text-align: center;
+    color: white;
+    background: url(../onthelake-b.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: right;
+    min-height: 100%;
 }
 
 h1 {
-  padding-top: 40px;
-  font-family: 'Dancing Script', cursive;
-  font-size: 62px;
-  font-weight: normal;
+    padding-top: 40px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 62px;
+    font-weight: normal;
 }
 
 h2, h3, h4, h5, h6, p {
-  font-family: 'Raleway', sans-serif;
-  font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
 }
 
 p {
@@ -167,8 +167,8 @@ p {
 }
 
 #countdown h2 {
-  font-size: 48px;
-  margin: 26px;
+    font-size: 48px;
+    margin: 26px;
 }
 
 
