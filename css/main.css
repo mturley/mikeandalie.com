@@ -162,6 +162,10 @@ p {
     margin: 18px 20px;
 }
 
+strong {
+    font-weight: bold;
+}
+
 #countdown {
     padding-bottom: 5px;
 }
