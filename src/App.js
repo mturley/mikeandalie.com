@@ -21,7 +21,8 @@ class App extends Component {
     this.scrollToGallery = this.scrollToGallery.bind(this);
   }
 
-  scrollToGallery() {
+  scrollToGallery(event) {
+    event && event.preventDefault();
     scrollToComponent(this._galleryContainer);
   }
 
@@ -73,6 +74,7 @@ class App extends Component {
                   <a
                     className="gallery"
                     onClick={this.scrollToGallery}
+                    href="#"
                   >
                     <h2>Memories</h2>
                     <img src="img/down-arrow.png" />
