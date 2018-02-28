@@ -33,7 +33,6 @@ const photos = [
   'smoothies-in-nh.jpg',
   'first-photo-of-mike.jpg',
   'seven-wonders-with-anna.jpg',
-  'on-the-common-TIMEHOP-VERSION.jpg',
   'swings-with-kristen.jpg',
   'alie-natural-hair.jpg',
   'mike-in-middle-school.jpg',
