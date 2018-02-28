@@ -1,10 +1,8 @@
 const photos = [
   'photobooth.jpg',
   'alie-new-makeup.jpg',
-  'alie-and-shannon-2.jpg',
   'griffin.jpg',
   'the-Os.jpg',
-  'squire.jpg',
   'alie-and-kristen.jpg',
   'engagement-ring.jpg',
   'alie-in-plaid.jpg',
