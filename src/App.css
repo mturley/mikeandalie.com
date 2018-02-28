@@ -105,6 +105,7 @@ a.gallery h2 {
   border: none;
   -webkit-appearance: none;
   background: transparent;
+  outline: 0;
 }
 
 .image-gallery-thumbnails-wrapper {
