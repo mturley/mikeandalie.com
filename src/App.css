@@ -75,10 +75,6 @@ article {
   margin-bottom: 150px;
 }
 
-.gallery-container {
-  background-color: #000;
-}
-
 a.gallery {
   transition: all 1s;
   position: absolute;
