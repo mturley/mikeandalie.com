@@ -18,9 +18,14 @@ body, html {
 
 #root {
   min-height: 100%;
+}
+
+.fullscreen {
+  min-height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 h1 {
@@ -30,9 +35,21 @@ h1 {
   min-width: 150px;
 }
 
-h2, h3, h4, h5, h6, p {
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  font-weight: normal;
+  min-width: 150px;
+}
+
+h3, h4, h5, h6, p {
   font-family: 'Raleway', sans-serif;
   font-weight: normal;
+}
+
+#countdown h3 {
+  font-size: 48px;
+  margin: 0;
 }
 
 p {
@@ -55,5 +72,67 @@ strong {
 }
 
 article {
-  margin-bottom: 200px;
+  margin-bottom: 150px;
+}
+
+.gallery-container {
+  background-color: #000;
+}
+
+a.gallery {
+  transition: all 1s;
+  position: absolute;
+  bottom: 15px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  bottom: 15px;
+  opacity: 0.7;
+}
+
+a.gallery:hover {
+  bottom: 25px;
+  opacity: 1;
+}
+
+a.gallery h2 {
+  margin-bottom: 5px;
+}
+
+.image-gallery-fullscreen-button, .image-gallery-play-button {
+  display: none;
+}
+
+.image-gallery-content .image-gallery-left-nav,
+.image-gallery-content .image-gallery-right-nav {
+  border: none;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.image-gallery-thumbnails-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  border-bottom: 2px solid #fff;
+}
+
+.image-gallery-image img {
+  height: calc(100vh - 90px);
+  margin-bottom: 90px;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .fullscreen {
+    min-height: calc(100vh - 64px);
+  }
+
+  .image-gallery-image img {
+    height: calc(100vh - 64px)
+  }
 }

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import ImageGallery from 'react-image-gallery';
+import scrollToComponent from 'react-scroll-to-component';
 import countdown from './vendor/countdown';
 import logo from './logo.svg';
+import photos from './photos.js';
 import './App.css';
+import '../node_modules/react-image-gallery/build/image-gallery.css';
 
 class App extends Component {
 
@@ -14,6 +18,11 @@ class App extends Component {
       minutes: null,
       seconds: null
     };
+    this.scrollToGallery = this.scrollToGallery.bind(this);
+  }
+
+  scrollToGallery() {
+    scrollToComponent(this._galleryContainer);
   }
 
   componentDidMount() {
@@ -36,45 +45,57 @@ class App extends Component {
     }
 
     return (
-      <div className="everything">
-        <div className="header-container">
-          <header className="wrapper clearfix">
-            <h1 className="title">Mike &amp; Alie</h1>
-          </header>
-        </div>
-
-        <div className="main-container">
-          <div className="main wrapper clearfix">
-            <article>
-              <section>
-                <div id="countdown">
-                  <h2 className="months">{pluralize(months, 'month')}</h2>
-                  <h2 className="days">{pluralize(days, 'day')}</h2>
-                  <h2 className="hours">{pluralize(hours, 'hour')}</h2>
-                  <h2 className="minutes">{pluralize(minutes, 'minute')}</h2>
-                  <h2 className="seconds">{pluralize(seconds, 'second')}</h2>
-                </div>
-              </section>
-              <section>
-                <p>
-                  <strong>August 25th, 2018</strong>
-                  <br />
-                  <strong>Sturbridge, MA</strong>
-                </p>
-              </section>
-              <section>
-                <p>
-                  <br />
-                  Check back here in the coming months for more details.
-                </p>
-                <p>
-                  Photo slideshow coming real soon... I promise!
-                </p>
-              </section>
-            </article>
+      <React.Fragment>
+        <div className="fullscreen">
+          <div className="header-container">
+            <header className="wrapper clearfix">
+              <h1 className="title">Mike &amp; Alie</h1>
+            </header>
+          </div>
+          <div className="main-container">
+            <div className="main wrapper clearfix">
+              <article>
+                <section>
+                  <div id="countdown">
+                    <h3 className="months">{pluralize(months, 'month')}</h3>
+                    <h3 className="days">{pluralize(days, 'day')}</h3>
+                    <h3 className="hours">{pluralize(hours, 'hour')}</h3>
+                    <h3 className="minutes">{pluralize(minutes, 'minute')}</h3>
+                    <h3 className="seconds">{pluralize(seconds, 'second')}</h3>
+                  </div>
+                </section>
+                <section>
+                  <p>
+                    <strong>August 25th, 2018</strong>
+                    <br />
+                    <strong>Sturbridge, MA</strong>
+                  </p>
+                </section>
+                <section>
+                  <a
+                    className="gallery"
+                    onClick={this.scrollToGallery}
+                  >
+                    <h2>Memories</h2>
+                    <img src="img/down-arrow.png" />
+                  </a>
+                </section>
+              </article>
+            </div>
           </div>
         </div>
-      </div>
+        <div
+          className="fullscreen gallery-container"
+          ref={r => this._galleryContainer = r}
+        >
+          <ImageGallery
+            items={photos}
+            slideInterval={5000}
+            onThumbnailClick={this.scrollToGallery}
+            autoPlay
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
