@@ -106,6 +106,14 @@ a.gallery h2 {
   -webkit-appearance: none;
   background: transparent;
   outline: 0;
+  transition: all 1s;
+}
+
+.image-gallery-content .image-gallery-left-nav:hover {
+  margin-left: -5px;
+}
+.image-gallery-content .image-gallery-right-nav:hover {
+  margin-right: -5px;
 }
 
 .image-gallery-thumbnails-wrapper {
