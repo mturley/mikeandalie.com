@@ -66,9 +66,7 @@ class App extends Component {
                 </section>
                 <section>
                   <p>
-                    <strong>August 25th, 2018</strong>
-                    <br />
-                    <strong>Sturbridge, MA</strong>
+                    August 25th, 2018 &nbsp;|&nbsp; Sturbridge, MA
                   </p>
                 </section>
                 <section>
