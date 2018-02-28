@@ -83,6 +83,8 @@ a.gallery {
   left: 0;
   right: 0;
   cursor: pointer;
+  color: #fff;
+  text-decoration: none;
   bottom: 15px;
   opacity: 0.7;
 }
