@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
+    "react-back2top": "^0.1.6",
     "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.7",
     "react-scripts": "^1.1.4",
