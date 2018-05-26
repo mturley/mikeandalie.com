@@ -90,33 +90,30 @@ class App extends Component {
                 </section>
                 <section className="main-links">
                   <a
+                    className="scroll-arrow"
                     onClick={this.scrollToDetails}
                     href="#"
                   >
-                    <h2>Details</h2>
                     <img src="img/down-arrow.png" />
                   </a>
-                  <a
-                    onClick={this.scrollToRegistry}
-                    href="#"
-                  >
-                    <h2>Registry</h2>
-                    <img src="img/down-arrow.png" />
-                  </a>
-                  <a
-                    onClick={this.scrollToRSVP}
-                    href="#"
-                  >
-                    <h2>RSVP</h2>
-                    <img src="img/down-arrow.png" />
-                  </a>
-                  <a
-                    onClick={this.scrollToGallery}
-                    href="#"
-                  >
-                    <h2>Memories</h2>
-                    <img src="img/down-arrow.png" />
-                  </a>
+                  <div className="anchors">
+                    <a
+                      className="details"
+                      onClick={this.scrollToDetails}
+                      href="#"
+                    >
+                      <h2>Details</h2>
+                    </a>
+                    <a onClick={this.scrollToRegistry} href="#">
+                      <h2>Registries</h2>
+                    </a>
+                    <a onClick={this.scrollToRSVP} href="#">
+                      <h2>RSVP</h2>
+                    </a>
+                    <a onClick={this.scrollToGallery} href="#">
+                      <h2>Memories</h2>
+                    </a>
+                  </div>
                 </section>
               </article>
             </div>

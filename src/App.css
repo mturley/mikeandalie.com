@@ -81,11 +81,13 @@ article {
   margin: auto;
   left: 0;
   right: 0;
+  padding: 0;
 }
 
 .main-links a {
   display: inline-block;
-  margin: 0 15px;
+  margin: 0;
+  padding: 0 18px;
   transition: all 1s;
   position: relative;
   bottom: 0px;
@@ -95,13 +97,22 @@ article {
   opacity: 0.7;
 }
 
+.main-links .scroll-arrow {
+  line-height: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.main-links:hover a.scroll-arrow,
+.main-links:hover .anchors:not(:hover) a.details,
 .main-links a:hover {
-  bottom: -10px;
+  bottom: 10px;
   opacity: 1;
 }
 
 .main-links a h2 {
   margin-bottom: 5px;
+  margin-top: 0;
 }
 
 .image-gallery-fullscreen-button, .image-gallery-play-button {
@@ -149,9 +160,23 @@ article {
     min-height: calc(100vh - 64px);
   }
 
+  .main-links {
+    position: static;
+  }
+
+  .main-links a {
+    display: block;
+    padding-bottom: 15px;
+    bottom: 0;
+  }
+  
+  .main-links:hover a.scroll-arrow,
+  .main-links:hover .anchors:not(:hover) a.details,
+  .main-links a:hover {
+    bottom: 0;
+  }
+
   .image-gallery-image img {
     height: calc(100vh - 64px)
   }
 }
-
-@media ()
