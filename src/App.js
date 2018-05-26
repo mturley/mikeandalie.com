@@ -18,7 +18,25 @@ class App extends Component {
       minutes: null,
       seconds: null
     };
+    this.scrollToDetails = this.scrollToDetails.bind(this);
+    this.scrollToRegistry = this.scrollToRegistry.bind(this);
+    this.scrollToRSVP = this.scrollToRSVP.bind(this);
     this.scrollToGallery = this.scrollToGallery.bind(this);
+  }
+
+  scrollToDetails(event) {
+    event && event.preventDefault();
+    scrollToComponent(this._detailsContainer);
+  }
+
+  scrollToRegistry(event) {
+    event && event.preventDefault();
+    scrollToComponent(this._registryContainer);
+  }
+
+  scrollToRSVP(event) {
+    event && event.preventDefault();
+    scrollToComponent(this._rsvpContainer);
   }
 
   scrollToGallery(event) {
@@ -70,9 +88,29 @@ class App extends Component {
                     August 25th, 2018 &nbsp;|&nbsp; Sturbridge, MA
                   </p>
                 </section>
-                <section>
+                <section className="main-links">
                   <a
-                    className="gallery"
+                    onClick={this.scrollToDetails}
+                    href="#"
+                  >
+                    <h2>Details</h2>
+                    <img src="img/down-arrow.png" />
+                  </a>
+                  <a
+                    onClick={this.scrollToRegistry}
+                    href="#"
+                  >
+                    <h2>Registry</h2>
+                    <img src="img/down-arrow.png" />
+                  </a>
+                  <a
+                    onClick={this.scrollToRSVP}
+                    href="#"
+                  >
+                    <h2>RSVP</h2>
+                    <img src="img/down-arrow.png" />
+                  </a>
+                  <a
                     onClick={this.scrollToGallery}
                     href="#"
                   >
@@ -83,6 +121,27 @@ class App extends Component {
               </article>
             </div>
           </div>
+        </div>
+        <div
+          className="fullscreen details-container"
+          ref={r => this._detailsContainer = r}
+        >
+          <h1>DETAILS GO HERE</h1>
+          <p>Stuff and things</p>
+        </div>
+        <div
+          className="fullscreen registry-container"
+          ref={r => this._registryContainer = r}
+        >
+          <h1>REGISTRY GOES HERE</h1>
+          <p>Stuff and things</p>
+        </div>
+        <div
+          className="fullscreen rsvp-container"
+          ref={r => this._rsvpContainer = r}
+        >
+          <h1>RSVP STUFF GO HERE</h1>
+          <p>Stuff and things</p>
         </div>
         <div
           className="fullscreen gallery-container"
