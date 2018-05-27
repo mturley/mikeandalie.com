@@ -24,7 +24,9 @@ class App extends Component {
     return event => {
       event && event.preventDefault();
       scrollToComponent(this._refs[refName], {
-        duration: 2000
+        duration: 2000,
+        offset: 50,
+        ease: 'in-out-cube'
       });
     };
   }
