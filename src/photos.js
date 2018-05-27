@@ -75,5 +75,5 @@ const photos = [
 
 export default photos.map(filename => ({
   original: `img/gallery/${filename}`,
-  thumbnail: `img/gallery/thumbs/${filename}`
+  thumbnail: `img/gallery/thumbs/${filename}`,
 }));

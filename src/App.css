@@ -28,6 +28,20 @@ body, html {
   position: relative;
 }
 
+.halfscreen {
+  min-height: calc(60vh - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.photostrip img {
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+}
+
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 62px;
@@ -85,7 +99,7 @@ strong {
   white-space: nowrap;
 }
 
-article {
+.main-container article {
   margin-bottom: 150px;
 }
 
@@ -131,26 +145,40 @@ article {
 
 .back-to-top {
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
-  padding: 5px;
-  background-color: #000;
-  z-index: 99999;
-  transition: opacity 0.3s;
-  opacity: 0.5;
-}
-
-.back-to-top a {
-  color: #fff;
+  z-index: 9998;
   cursor: pointer;
-  font-size: 18px;
-  padding: 15px 10px;
-  text-decoration: none;
-  z-index: 99999;
 }
 
-.back-to-top:hover {
-  opacity: 1.0;
+.back-to-top img {
+  height: 22px;
+  width: auto;
+  margin-left: 12px;
+  padding-bottom: 3px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.back-to-top span {
+  transition: background-color 0.5s, padding 0.5s;
+  display: inline-block;
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  font-size: 18px;
+  padding: 10px 15px 8px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 9999;
+}
+
+.back-to-top:hover span {
+  background-color: rgba(65,105,225,1);
+  text-decoration: underline;
+  padding: 15px 20px 12px 20px;
 }
 
 .image-gallery-fullscreen-button, .image-gallery-play-button {
