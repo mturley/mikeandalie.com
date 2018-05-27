@@ -24,7 +24,6 @@ class App extends Component {
     return event => {
       event && event.preventDefault();
       scrollToComponent(this._refs[refName], {
-        offset: 90,
         duration: 2000
       });
     };

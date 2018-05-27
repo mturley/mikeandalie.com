@@ -21,11 +21,15 @@ body, html {
 }
 
 .fullscreen {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+}
+
+.minus-thumbnails {
+  min-height: calc(100vh - 90px);
 }
 
 .halfscreen {

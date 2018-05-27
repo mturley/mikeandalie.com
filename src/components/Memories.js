@@ -6,7 +6,7 @@ class Memories extends React.Component {
   render() {
     return (
       <div
-        className="fullscreen gallery-container"
+        className="fullscreen minus-thumbnails gallery-container"
         ref={r => this._galleryContainer = r}
       >
         <ImageGallery

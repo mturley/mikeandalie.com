@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Home = props => (
-  <div className="fullscreen">
+  <div className="fullscreen minus-thumbnails">
     <div className="header-container">
       <header className="wrapper clearfix">
         <h1 className="title">Mike &amp; Alie</h1>
