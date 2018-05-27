@@ -185,6 +185,28 @@ strong {
   padding: 15px 20px 12px 20px;
 }
 
+.registry-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
+  margin-top: -10px;
+}
+
+.registry-flex .left, .registry-flex .right {
+  flex: 1 300px;
+  min-width: 0;
+  margin-top: 20px;
+}
+
+.registry-flex img {
+  width: 80%;
+  height: auto;
+  margin: auto;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 20px;
+  padding: 30px;
+} 
+
 .image-gallery-fullscreen-button, .image-gallery-play-button {
   display: none;
 }
