@@ -8,7 +8,11 @@ class Registries extends React.Component {
         ref={r => this._registryContainer = r}
       >
         <h1>Registries</h1>
-        <p>We are registered at Amazon and at Bed Bath &amp; Beyond.</p>
+        <p>
+          We are registered at Amazon and at Bed Bath &amp; Beyond.
+          <br />
+          Gifts are appreciated but not required.
+        </p>
 
         <div className="registry-flex">
           <div class="left">
@@ -18,9 +22,6 @@ class Registries extends React.Component {
                 Visit our Amazon Registry
               </p>
             </a>
-            <p>
-              Short Link: <a href="http://amazon.mikeandalie.com" target="_blank">amazon.mikeandalie.com</a>
-            </p>
           </div>
           <div class="right">
             <a
@@ -33,13 +34,10 @@ class Registries extends React.Component {
               </p>
             </a>
             <p>
-              Short Link: <a href="http://bbb.mikeandalie.com" target="_blank">bbb.mikeandalie.com</a>
-              <br />
               Registry #: 545629397
             </p>
           </div>
         </div>
-        <p>Gifts are appreciated but not required.</p>
       </div>
     );
   }

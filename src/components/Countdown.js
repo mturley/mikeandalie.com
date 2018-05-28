@@ -41,7 +41,7 @@ class Countdown extends React.Component {
 
   render() {
     const {
-      days, hours, minutes, seconds,
+      days, hours, minutes, seconds
     } = this.state;
 
     return (
