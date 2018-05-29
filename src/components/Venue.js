@@ -7,18 +7,29 @@ class Venue extends React.Component {
       <div className="fullscreen details-container">
         <h1>Venue</h1>
         <h2>
-          Hyland Orchard &amp; Brewery<br />
-          199 Arnold Rd, Sturbridge, MA 01518
+          <strong>Hyland Orchard &amp; Brewery</strong>
         </h2>
+        <h3 className="subheading">
+          <a href="https://goo.gl/maps/QoQ8VwxkiTJ2" target="_blank">
+            199 Arnold Rd, Sturbridge, MA 01518
+            <img src="img/google-maps.png" className="inline-right" />
+          </a>
+        </h3>
         <p>
-          We are thrilled for you to join us for our ceremony on the sunny hilltop at Hyland Orchard.<br />
-          Wagon rides to the ceremony will begin at 2:30 PM.
+          We are thrilled for you to join us for our ceremony on the sunny hilltop at Hyland Orchard!
         </p>
         <p>
-          A reception will follow, to be held in the barn and bonfire area on site.
+          <strong>Wagon rides to the ceremony will begin at 2:30 PM.</strong><br />
+          A reception will follow, to be held in the barn and bonfire area at the bottom of the hill.
         </p>
         <p>
-          A brewery and disc golf course are on site, and lawn games will be available.
+          Free lawn games will be available, and the on-site disc golf course and brewery bar will remain open for business.
+        </p>
+        <p>
+          There are many <a href="https://www.google.com/destination/map/topsights?dest_mid=%2Fm%2F01m8q4">
+            beautiful parks and recreation areas around Sturbridge
+          </a>.
+          <br />Sunday hiking trips before you leave are encouraged!
         </p>
       </div>
     );
