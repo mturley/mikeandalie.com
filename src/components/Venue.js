@@ -1,4 +1,5 @@
 import React from 'react';
+import A from './ExternalLink';
 
 class Venue extends React.Component {
   render() {
@@ -10,26 +11,33 @@ class Venue extends React.Component {
           <strong>Hyland Orchard &amp; Brewery</strong>
         </h2>
         <h3 className="subheading">
-          <a href="https://goo.gl/maps/QoQ8VwxkiTJ2" target="_blank">
+          <A href="https://goo.gl/maps/QoQ8VwxkiTJ2">
             199 Arnold Rd, Sturbridge, MA 01518
             <img src="img/google-maps.png" className="inline-right" />
-          </a>
+          </A>
         </h3>
         <p>
-          We are thrilled for you to join us for our ceremony on the sunny hilltop at Hyland Orchard!
+          <strong>We are thrilled for you to join us at our ceremony on the sunny hilltop at Hyland Orchard!</strong>&nbsp;
+          Wagon rides to the ceremony will begin at 2:30 PM.
         </p>
         <p>
-          <strong>Wagon rides to the ceremony will begin at 2:30 PM.</strong><br />
-          A reception will follow, to be held in the barn and bonfire area at the bottom of the hill.
+          Our reception will be held in the barn and bonfire area at the bottom of the hill.
+          Free lawn games will be available all day, and the on-site disc golf course and brewery bar will remain open for business.
         </p>
         <p>
-          Free lawn games will be available, and the on-site disc golf course and brewery bar will remain open for business.
-        </p>
-        <p>
-          There are many <a href="https://www.google.com/destination/map/topsights?dest_mid=%2Fm%2F01m8q4">
-            beautiful parks and recreation areas around Sturbridge
-          </a>.
-          <br />Sunday hiking trips before you leave are encouraged!
+          We have rooms blocked at the <A href="http://www.sturbridgehosthotel.com/">
+            Sturbridge Host Hotel
+          </A>, the <A href="https://www.lq.com/en/hotels/massachusetts/sturbridge/sturbridge">
+            LaQuinta Inn
+          </A>, and the <A href="https://www.sturbridgecomfortinn.com/">
+            Comfort Inn
+          </A>.
+          <br />
+          There are many <strong>
+            <A href="https://www.google.com/destination/map/topsights?dest_mid=%2Fm%2F01m8q4">
+              beautiful parks and recreation areas around Sturbridge
+            </A>
+          </strong>! Sunday hiking trips before you leave are encouraged.
         </p>
       </div>
     );
