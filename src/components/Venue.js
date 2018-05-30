@@ -34,7 +34,7 @@ class Venue extends React.Component {
           </A>.
           <br />
           There are many <strong>
-            <A href="https://www.google.com/destination/map/topsights?dest_mid=%2Fm%2F01m8q4">
+            <A href="https://www.google.com/destination/map/topsights?q=things+to+do+in+sturbridge+ma&site=search&output=search&dest_mid=/m/01m8q4&sa=X&ved=0ahUKEwi0rtHd3qzbAhUDrlkKHbvqBAsQ6tEBCC4oBDAA">
               beautiful parks and recreation areas around Sturbridge
             </A>
           </strong>! Sunday hiking trips before you leave are encouraged.
