@@ -1,0 +1,52 @@
+0 silly input [ 'api' ]
+1 silly flags { _: [ 'run' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   script: 'api',
+1 silly flags   args: [] }
+2 verbose rootPath /Users/mturley/git/mikeandalie.com
+3 info version 2.11.0
+4 silly existsSync /Users/mturley/git/mikeandalie.com/VERSION
+5 silly initialize attempt
+6 silly initialize success
+7 silly execute attempt
+8 silly runScriptInDir api [] api
+9 silly getExecOpts { cwd: '/Users/mturley/git/mikeandalie.com/api' }
+10 error api Errored while running script in 'mikeandalie-api'
+11 error execute callback with error
+12 error Error: Command failed: npm run api
+12 error sh: nodemon: command not found
+12 error npm ERR! file sh
+12 error npm ERR! code ELIFECYCLE
+12 error npm ERR! errno ENOENT
+12 error npm ERR! syscall spawn
+12 error npm ERR! mikeandalie-api@1.0.0 start: `nodemon ./bin/www`
+12 error npm ERR! spawn ENOENT
+12 error npm ERR!
+12 error npm ERR! Failed at the mikeandalie-api@1.0.0 start script.
+12 error npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+12 error npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+12 error
+12 error npm ERR! A complete log of this run can be found in:
+12 error npm ERR!     /Users/mturley/.npm/_logs/2018-06-01T03_29_12_660Z-debug.log
+12 error npm ERR! code ELIFECYCLE
+12 error npm ERR! errno 1
+12 error npm ERR! mikeandalie-api@1.0.0 api: `npm run start`
+12 error npm ERR! Exit status 1
+12 error npm ERR!
+12 error npm ERR! Failed at the mikeandalie-api@1.0.0 api script.
+12 error npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+12 error npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+12 error
+12 error npm ERR! A complete log of this run can be found in:
+12 error npm ERR!     /Users/mturley/.npm/_logs/2018-06-01T03_29_12_687Z-debug.log
+12 error
+12 error > mikeandalie-api@1.0.0 api /Users/mturley/git/mikeandalie.com/api
+12 error > npm run start
+12 error
+12 error
+12 error > mikeandalie-api@1.0.0 start /Users/mturley/git/mikeandalie.com/api
+12 error > nodemon ./bin/www
+12 error
+12 error
+12 error     at Promise.all.then.arr (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:236:11)

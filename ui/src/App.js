@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Back2Top from 'react-back2top';
 import scrollToComponent from 'react-scroll-to-component';
-import logo from './logo.svg';
 
 import './App.css';
 import '../node_modules/react-image-gallery/build/image-gallery.css';
