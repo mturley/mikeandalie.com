@@ -12,7 +12,7 @@
     "react-scroll-to-component": "^1.0.2"
   },
   "scripts": {
-    "start:ui": "npm run start",
+    "start:home": "npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "update": "git pull; npm i; npm run build",

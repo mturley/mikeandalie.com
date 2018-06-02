@@ -3,8 +3,8 @@
 		"lerna": "^2.11.0"
 	},
 	"scripts": {
-		"ui": "lerna run --parallel start:ui",
-		"api": "lerna run --parallel start:api",
+		"home": "lerna run --parallel start:home",
+		"rsvp": "lerna run --parallel start:rsvp",
 		"start": "lerna run --parallel start"
 	}
 }
