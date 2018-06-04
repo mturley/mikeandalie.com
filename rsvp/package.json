@@ -1,5 +1,5 @@
 {
-  "name": "rsvp",
+  "name": "mikeandalie-rsvp",
   "private": true,
   "scripts": {
     "start:rsvp": "npm run start",
@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
-    "meteor-node-stubs": "^0.3.2"
+    "meteor-node-stubs": "^0.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
   }
 }
