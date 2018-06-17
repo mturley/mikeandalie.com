@@ -5,7 +5,6 @@ class RSVP extends React.Component {
     return (
       <div
         className="fullscreen rsvp-container"
-        ref={r => this._rsvpContainer = r}
       >
         <h1>RSVP</h1>
         <p>
