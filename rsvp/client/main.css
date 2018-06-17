@@ -2,13 +2,12 @@
 
 html {
   text-align: center;
-  color: white;
-  background: url(img/onthelake-b.jpg) no-repeat center center fixed;
+  background: url(resources/hyland-hilltop.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: right;
+  background-position: center;
   min-height: 100%;
 }
 
