@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start:rsvp": "npm run start",
-    "start": "meteor run"
+    "start": "meteor run --port 3001"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",

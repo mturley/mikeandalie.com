@@ -1,0 +1,39 @@
+
+html {
+  background: url(resources/hyland-hilltop-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  min-height: calc(20vh);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.form-container {
+  min-height: calc(50vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container form {
+  border: 2px solid white;
+}

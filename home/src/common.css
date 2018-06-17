@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Raleway:400,700');
+
+html {
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 62px;
+  font-weight: normal;
+  min-width: 150px;
+}
+
+h2, h3, h4, h5, h6, p, .back-to-top a {
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h2 strong {
+  font-size: 1.1em;
+}
+
+h2.cursive {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  font-weight: normal;
+  min-width: 150px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h3.subheading {
+  margin-top: -20px;
+}
+
+a {
+  color: #4ccbff;
+  vertical-align: middle;
+}
+
+a:hover {
+  color: yellow;
+}
+
+a img {
+  vertical-align: middle;
+}
+
+a img.inline-right {
+  margin-left: 5px;
+  position: relative;
+  top: -2px;
+}
+
+p {
+  font-size: 18px;
+  margin: 18px 45px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  h2 { 
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+}

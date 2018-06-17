@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Back2Top from 'react-back2top';
 import scrollToComponent from 'react-scroll-to-component';
 
-import './App.css';
+import './HomeApp.css';
 import '../node_modules/react-image-gallery/build/image-gallery.css';
 
 import { Home, Countdown, Venue, Registries, RSVP, Memories } from './components';
 
-class App extends Component {
+class HomeApp extends Component {
   constructor() {
     super();
     this.scrollToRef = this.scrollToRef.bind(this);
@@ -61,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HomeApp;
