@@ -1,4 +1,4 @@
-@import './common.css';
+@import './common/common.css';
 
 html {
   background: url(img/onthelake-b.jpg) no-repeat center center fixed;

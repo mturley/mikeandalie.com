@@ -1,3 +1,4 @@
+/* common.css is implicitly imported by Meteor via symbolic link */
 
 html {
   background: url(resources/hyland-hilltop-bg.jpg) no-repeat center center fixed;
@@ -36,4 +37,9 @@ header h1 {
 
 .form-container form {
   border: 2px solid white;
+}
+
+h1.code {
+  font-family: 'Raleway', sans-serif;
+  font-size: 42px;
 }
