@@ -22,7 +22,9 @@ export default class RSVPApp extends Component {
 
   onCodeChange(event) {
     const { target: { value } } = event;
-    this.setState({ code: value.substring(0, 4) });
+    // Remove non-numeric characters and truncate at 4 digits
+    const code = value.replace(/\D/g, '').substring(0, 4);
+    this.setState({ code });
   }
 
   render() {
@@ -56,6 +58,9 @@ export default class RSVPApp extends Component {
           <div class={cx('spinner', { visible: code.length === 4 })}>
             <img src="img/spinner.png" />
           </div>
+          {code === '1234' && (
+            <h3>Hey, that's the combination on my luggage!</h3>
+          )}
         </section>
         <section className="spacer" />
         <footer>
