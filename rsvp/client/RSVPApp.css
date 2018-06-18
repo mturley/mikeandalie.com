@@ -24,21 +24,67 @@ header {
   padding: 50px;
 }
 
+header a.back-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  color: white;
+  transition: padding 1s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header a.back-home img, header a.back-home span {
+  vertical-align: middle;
+  padding-right: 8px;
+}
+
+header a:hover {
+  padding-left: 20px;
+}
+
+header a:hover span {
+  color: yellow;
+  text-decoration: underline;
+}
+
 header h1 {
   margin: 0;
   padding-top: 10px;
 }
 
-section.form-container {
+section.main-content {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  margin-bottom: calc(30vh);
 }
 
-section.form-container form {
+section.spacer {
+  display: flex;
+  flex-grow: 5;
+}
+
+.code-container form {
   border: 2px solid white;
+  background-image: url(img/code-parens-white.png);
+  background-position: center;
+  background-position-y: 60%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.code-container p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 input.code {
@@ -57,4 +103,21 @@ input.code {
 a.no-code {
   color: white;
   font-size: 14px;
+}
+
+.spinner {
+  padding-top: 15px;
+  height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .code-container {
+    width: 420px;
+  }
+
+  input.code {
+    width: 220px;
+    font-size: 100px;
+  }
 }
