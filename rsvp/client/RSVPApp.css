@@ -1,13 +1,12 @@
 /* common.css is implicitly imported by Meteor via symbolic link */
 
 html {
-  background: url(resources/hyland-hilltop-bg.jpg) no-repeat center center fixed;
+  background: url(img/hyland-hilltop-bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
-  min-height: 100%;
 }
 
 html, body {
@@ -15,12 +14,14 @@ html, body {
   padding: 0;
 }
 
-header {
-  min-height: calc(20vh);
-  margin: 0;
+main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh);
+}
+
+header {
+  padding: 50px;
 }
 
 header h1 {
@@ -28,22 +29,32 @@ header h1 {
   padding-top: 10px;
 }
 
-.form-container {
-  min-height: calc(50vh);
+section.form-container {
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
+  margin-bottom: calc(30vh);
 }
 
-.form-container form {
+section.form-container form {
   border: 2px solid white;
 }
 
-h1.code {
+input.code {
   font-family: 'Raleway', sans-serif;
-  font-size: 156px;
-  margin: 0;
-  padding: 0;
-  margin-top: -25px;
-  margin-bottom: 25px;
+  font-size: 140px;
+  height: 150px;
+  width: 320px;
+  text-align: center;
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  color: white;
+  outline: none;
+}
+
+a.no-code {
+  color: white;
+  font-size: 14px;
 }
