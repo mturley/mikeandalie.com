@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 
 export default class RSVPApp extends Component {
   constructor() {
@@ -52,7 +53,7 @@ export default class RSVPApp extends Component {
               </p>
             </form>
           </div>
-          <div class="spinner">
+          <div class={cx('spinner', { visible: code.length === 4 })}>
             <img src="img/spinner.png" />
           </div>
         </section>
