@@ -8,8 +8,8 @@
     "react-back2top": "^0.1.6",
     "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.7",
-    "react-scripts": "^1.1.4",
-    "react-scroll-to-component": "^1.0.2"
+    "react-scroll-to-component": "^1.0.2",
+    "webpack": "^4.12.0"
   },
   "scripts": {
     "start:home": "npm run start",
@@ -24,6 +24,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.8.2"
+    "eslint-plugin-react": "^7.8.2",
+    "react-scripts": "^1.1.4"
   }
 }
