@@ -8,6 +8,7 @@ export default class RSVPApp extends Component {
       code: '',
       forceCodeFocus: true
     };
+    this.derivedState = this.derivedState.bind(this);
     this.focusCodeInput = this.focusCodeInput.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
   }
@@ -16,19 +17,28 @@ export default class RSVPApp extends Component {
     this.focusCodeInput();
   }
 
+  derivedState() {
+    const { code } = this.state;
+    const luggage = code === '1234';
+    const codeEntered = code.length === 4;
+    const ready = codeEntered && !luggage;
+    return { codeEntered, luggage, ready };
+  }
+
   focusCodeInput() {
     this._codeInput && this._codeInput.focus();
   }
 
   onCodeChange(event) {
-    const { target: { value } } = event;
     // Remove non-numeric characters and truncate at 4 digits
+    const { target: { value } } = event;
     const code = value.replace(/\D/g, '').substring(0, 4);
     this.setState({ code });
   }
 
   render() {
     const { code, forceCodeFocus } = this.state;
+    const { luggage, ready } = this.derivedState();
     return (
       <main>
         <header>
@@ -42,25 +52,34 @@ export default class RSVPApp extends Component {
         <section className="main-content">
           <div className="code-container">
             <form>
-              <p>Enter the 4-digit code found on your RSVP card:</p>
-              <input
-                className="code"
-                value={code}
-                onChange={this.onCodeChange}
-                onBlur={forceCodeFocus ? this.focusCodeInput : null}
-                ref={r => this._codeInput = r}
-              />
-              <p>
-                <a className="no-code" href="#">Lost your code? Love filling out forms?</a>
+              <p className={cx('code-header', { visible: !ready })}>
+                Enter&nbsp;the&nbsp;4-digit&nbsp;code
+                found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
               </p>
+              <div className="fancy-parentheses">
+                {/* TODO force the numeric keypad on mobile, see notes */}
+                <input
+                  className="code"
+                  value={code}
+                  onChange={this.onCodeChange}
+                  onBlur={forceCodeFocus ? this.focusCodeInput : null}
+                  ref={r => this._codeInput = r}
+                />
+              </div>
+              <div className={cx('code-footer', { visible: !ready })}>
+                {!luggage ? (
+                  <p>
+                    <a className="no-code" href="#">Lost your code? Love filling out forms?</a>
+                  </p>
+                ) : (
+                  <p className="luggage">Hey, that's the combination on my luggage!</p>
+                )}
+              </div>
+              <div class={cx('spinner', { visible: ready })}>
+                <img src="img/spinner.png" />
+              </div>
             </form>
           </div>
-          <div class={cx('spinner', { visible: code.length === 4 })}>
-            <img src="img/spinner.png" />
-          </div>
-          {code === '1234' && (
-            <h3>Hey, that's the combination on my luggage!</h3>
-          )}
         </section>
         <section className="spacer" />
         <footer>

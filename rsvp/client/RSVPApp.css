@@ -69,13 +69,22 @@ section.spacer {
   flex-grow: 5;
 }
 
+.code-container, .code-container * {
+  text-align: center;
+}
+
 .code-container form {
   border: 2px solid white;
+}
+
+.fancy-parentheses {
   background-image: url(img/code-parens-white.png);
   background-position: center;
-  background-position-y: 60%;
+  background-position-y: 70%;
   background-repeat: no-repeat;
   background-size: contain;
+  width: 400px;
+  height: 160px;
   padding-left: 25px;
   padding-right: 25px;
   margin-left: 25px;
@@ -87,9 +96,21 @@ section.spacer {
   margin-right: 10px;
 }
 
+.code-header {
+  transition: all 0.5s;
+  overflow: hidden;
+  height: 0;
+  margin-bottom: 0;
+}
+
+.code-header.visible {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
 input.code {
   font-family: 'Raleway', sans-serif;
-  font-size: 140px;
+  font-size: 135px;
   height: 150px;
   width: 350px;
   text-align: center;
@@ -100,20 +121,34 @@ input.code {
   outline: none;
 }
 
-a.no-code {
+.code-footer {
+  transition: all 0.5s;
+  overflow: hidden;
+  height: 0;
+  margin: 0;
+}
+
+.code-footer.visible {
+  margin-top: -10px;
+  height: 60px;
+}
+
+a.no-code, .luggage {
   color: white;
   font-size: 14px;
+  height: 25px;
 }
 
 .spinner {
-  padding-top: 15px;
   overflow: hidden;
   height: 0;
-  transition: height 0.5s;
+  transition: all 0.5s;
 }
 
 .spinner.visible {
   height: 64px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
@@ -121,8 +156,25 @@ a.no-code {
     width: 420px;
   }
 
+  .fancy-parentheses {
+    width: 320px;
+    height: 150px;
+  }
+
+  .code-header.visible {
+    margin-top: 16px;
+    height: 48px;
+    margin-bottom: 0;
+  }
+
   input.code {
     width: 300px;
-    font-size: 100px;
+    font-size: 110px;
+  }
+
+  .code-footer.visible {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    height: 45px;
   }
 }
