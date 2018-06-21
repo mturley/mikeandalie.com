@@ -42,17 +42,6 @@ module.exports = {
     servers: {
       one: {}
     }
-  },
-
-  // (Optional)
-  // Use the proxy to setup ssl or to route requests to the correct
-  // app when there are several apps
-
-  // proxy: {
-  //   domains: 'rsvp.mikeandalie.com',
-  //   ssl: {
-  //     letsEncryptEmail: 'mike.turley@alum.cs.umass.edu',
-  //     forceSSL: true
-  //   }
-  // }
+  }
+  
 };

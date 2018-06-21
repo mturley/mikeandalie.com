@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { withTracker } from 'meteor/react-meteor-data';
 
+import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
 class RSVPApp extends Component {
