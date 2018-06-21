@@ -139,16 +139,18 @@ a.no-code, .luggage {
   height: 25px;
 }
 
-.spinner {
-  overflow: hidden;
+.code-container .no-such-code, .code-container .matching-invitation {
   height: 0;
+  overflow: hidden;
   transition: all 0.5s;
 }
 
-.spinner.visible {
-  height: 64px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+.code-container .no-such-code.visible {
+  height: 61px;
+}
+
+.code-container .matching-invitation.visible {
+  height: 61px;
 }
 
 @media (max-width: 768px) {

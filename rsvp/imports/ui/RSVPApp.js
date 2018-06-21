@@ -5,6 +5,8 @@ import cx from 'classnames';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
+import RSVPCodeResults from './RSVPCodeResults';
+
 class RSVPApp extends Component {
   constructor() {
     super();
@@ -26,7 +28,7 @@ class RSVPApp extends Component {
     const luggage = code === '1234';
     const codeEntered = code.length === 4;
     const ready = codeEntered && !luggage;
-    return { codeEntered, luggage, ready };
+    return { ...this.state, codeEntered, luggage, ready };
   }
 
   focusCodeInput() {
@@ -73,18 +75,7 @@ class RSVPApp extends Component {
                   ref={r => this._codeInput = r}
                 />
               </div>
-              <div className={cx('code-footer', { visible: !ready })}>
-                {!luggage ? (
-                  <p>
-                    <a className="no-code" href="#">Lost your code? Love filling out forms?</a>
-                  </p>
-                ) : (
-                  <p className="luggage">Hey, that's the combination on my luggage!</p>
-                )}
-              </div>
-              <div className={cx('spinner', { visible: ready })}>
-                <img src="img/spinner.png" />
-              </div>
+              <RSVPCodeResults {...this.derivedState()} />
             </form>
           </div>
         </section>
