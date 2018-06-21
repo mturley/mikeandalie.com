@@ -85,8 +85,8 @@ class RSVPApp extends Component {
         </section>
         <section className="spacer" />
         <footer>
-          <h4>Please respond no later than July 25th.</h4>
-          <h5>Yes, <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a> to show off.</h5>
+          <h4>Please respond by July 25th. ❤️</h4>
+          <h5>Yes, <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a> to show off. 👨‍💻</h5>
         </footer>
       </main>
     );
