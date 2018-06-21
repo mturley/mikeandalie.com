@@ -31,7 +31,9 @@ class RSVPApp extends Component {
   }
 
   focusCodeInput() {
-    //this._codeInput && this._codeInput.focus();
+    // TODO only focus when there is no code entered?
+    // TODO make the damn thing a numeric only input?
+    this._codeInput && this._codeInput.focus();
   }
 
   onCodeChange(event) {
@@ -39,15 +41,6 @@ class RSVPApp extends Component {
     const { target: { value } } = event;
     const code = value.replace(/\D/g, '').substring(0, 4);
     this.setState({ code });
-  }
-
-  handleNewInvitation(event) {
-    event.preventDefault();
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    Invitations.insert({
-      name: text
-    });
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
   render() {
@@ -101,9 +94,6 @@ class RSVPApp extends Component {
           <h4>Please respond no later than July 25th.</h4>
           <h5>Yes, <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a> to show off.</h5>
         </footer>
-        <form className="new-invitation" onSubmit={this.handleNewInvitation.bind(this)}>
-              <input type="text" ref="textInput" placeholder="type here" />
-        </form>
       </main>
     );
   }
