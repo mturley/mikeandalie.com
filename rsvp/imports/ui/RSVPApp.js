@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class RSVPApp extends Component {
+import { Invitations } from '../api/invitations.js';
+
+class RSVPApp extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,7 +31,7 @@ export default class RSVPApp extends Component {
   }
 
   focusCodeInput() {
-    this._codeInput && this._codeInput.focus();
+    //this._codeInput && this._codeInput.focus();
   }
 
   onCodeChange(event) {
@@ -36,9 +41,19 @@ export default class RSVPApp extends Component {
     this.setState({ code });
   }
 
+  handleNewInvitation(event) {
+    event.preventDefault();
+    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    Invitations.insert({
+      name: text
+    });
+    ReactDOM.findDOMNode(this.refs.textInput).value = '';
+  }
+
   render() {
     const { code, forceCodeFocus } = this.state;
     const { luggage, ready } = this.derivedState();
+    console.log('RENDER! DATA:', this.props.acceptedInvitations);
     return (
       <main>
         <header>
@@ -75,7 +90,7 @@ export default class RSVPApp extends Component {
                   <p className="luggage">Hey, that's the combination on my luggage!</p>
                 )}
               </div>
-              <div class={cx('spinner', { visible: ready })}>
+              <div className={cx('spinner', { visible: ready })}>
                 <img src="img/spinner.png" />
               </div>
             </form>
@@ -83,11 +98,23 @@ export default class RSVPApp extends Component {
         </section>
         <section className="spacer" />
         <footer>
-          <h4>
-            Please respond no later than July 25th.
-          </h4>
+          <h4>Please respond no later than July 25th.</h4>
+          <h5>Yes, <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a> to show off.</h5>
         </footer>
+        <form className="new-invitation" onSubmit={this.handleNewInvitation.bind(this)}>
+              <input type="text" ref="textInput" placeholder="type here" />
+        </form>
       </main>
     );
   }
 }
+
+RSVPApp.propTypes = {
+  acceptedInvitations: PropTypes.arrayOf(PropTypes.object)
+};
+
+export default withTracker(() => ({
+  acceptedInvitations: Invitations.find({
+    //attending: { $eq: true }
+  }).fetch()
+}))(RSVPApp);

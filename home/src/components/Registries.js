@@ -15,7 +15,7 @@ class Registries extends React.Component {
         </p>
 
         <div className="registry-flex">
-          <div class="left">
+          <div className="left">
             <a href="https://www.amazon.com/wedding/share/mikeandalie" target="_blank">
               <img src="img/registry-amazon.jpg" />
               <p>
@@ -23,7 +23,7 @@ class Registries extends React.Component {
               </p>
             </a>
           </div>
-          <div class="right">
+          <div className="right">
             <a
               href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=545629397&eventType=Wedding"
               target="_blank"

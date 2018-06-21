@@ -5,6 +5,9 @@
 	"scripts": {
 		"home": "lerna run --parallel start:home",
 		"rsvp": "lerna run --parallel start:rsvp",
-		"start": "lerna run --parallel start"
+		"start": "lerna run --parallel start",
+		"deploy": "lerna run --parallel deploy",
+		"deploy:home": "lerna run --parallel deploy:home",
+		"deploy:rsvp": "lerna run --parallel deploy:rsvp"
 	}
 }
