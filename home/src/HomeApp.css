@@ -161,7 +161,17 @@ body, html {
   background-color: rgba(255,255,255,0.5);
   border-radius: 20px;
   padding: 30px;
-} 
+}
+
+a.inline > * {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 20px;
+}
+
+a.inline * {
+  text-decoration: underline;
+}
 
 .image-gallery-fullscreen-button, .image-gallery-play-button {
   display: none;

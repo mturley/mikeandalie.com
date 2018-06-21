@@ -45,9 +45,13 @@ class RSVPApp extends Component {
   }
 
   render() {
+    const { acceptedInvitations } = this.props;
     const { code, forceCodeFocus } = this.state;
-    const { luggage, ready } = this.derivedState();
-    console.log('RENDER! DATA:', this.props.acceptedInvitations);
+    const { ready } = this.derivedState();
+    const numConfirmedGuests = acceptedInvitations.reduce(
+      (sum, invitation) => sum + invitation.numGuestsAccepted,
+      0
+    );
     return (
       <main>
         <header>
@@ -56,7 +60,7 @@ class RSVPApp extends Component {
             <span>Mike &amp; Alie</span>
           </a>
           <h1>RSVP</h1>
-          <h3>0 confirmed guests</h3>
+          <h3>{numConfirmedGuests} confirmed guests</h3>
         </header>
         <section className="main-content">
           <div className="code-container">
@@ -94,7 +98,5 @@ RSVPApp.propTypes = {
 };
 
 export default withTracker(() => ({
-  acceptedInvitations: Invitations.find({
-    //attending: { $eq: true }
-  }).fetch()
+  acceptedInvitations: Invitations.find({ accepted: true }).fetch()
 }))(RSVPApp);

@@ -8,10 +8,20 @@ class RSVP extends React.Component {
       >
         <h1>RSVP</h1>
         <p>
-          Mike promises he is almost done with this thing and he begs your forgiveness for wanting to show off.
+          You may notice that Mike got a little carried away and made a fancy RSVP code thing, against the advice of many of his peers.
         </p>
-        <p>An RSVP form will appear here soon.</p>
-        <p>For now, you may RSVP by contacting Mike or Alie.</p>
+        <a href="/rsvp/" className="inline">
+          <img src="img/rsvp-card.png" />
+          <div>
+            <p>
+              Got your code?
+            </p>
+            <h2>Continue to the RSVP Form</h2>
+          </div>
+        </a>
+        <p>
+          If you can't find your code or don't want to use it, that's okay. You can use the form anyway.
+        </p>
       </div>
     );
   }

@@ -150,7 +150,7 @@ a.no-code, .luggage {
 }
 
 .code-container .matching-invitation.visible {
-  height: 61px;
+  height: 125px;
 }
 
 @media (max-width: 768px) {
