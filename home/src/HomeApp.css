@@ -163,14 +163,36 @@ body, html {
   padding: 30px;
 }
 
-a.inline > * {
+.rsvp-container .inline > * {
   display: inline-block;
   vertical-align: middle;
   margin: 20px;
 }
 
-a.inline * {
-  text-decoration: underline;
+.rsvp-container a.inline .button {
+  padding: 25px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.rsvp-container a.inline:hover .button {
+  background-color: rgba(255,255,255,0.25);
+}
+
+.rsvp-container a.inline:active .button {
+  background-color: white;
+  color: black;
+}
+
+.rsvp-container .emoji {
+  font-size: 64px;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  top: 15px;
 }
 
 .image-gallery-fullscreen-button, .image-gallery-play-button {

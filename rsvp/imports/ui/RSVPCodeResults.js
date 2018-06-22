@@ -5,8 +5,12 @@ import cx from 'classnames';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
+const FORM_ENABLED = true;
+
 const RSVPCodeResults = props => {
   const { ready, luggage, matchingInvitation } = props;
+  const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
+  const onDeclineClick = event => props.onDeclineClick(event, matchingInvitation);
   return (
     <React.Fragment>
       <div className={cx('code-footer', { visible: !ready })}>
@@ -19,15 +23,28 @@ const RSVPCodeResults = props => {
         )}
       </div>
       <div className={cx('no-such-code', { visible: ready && !matchingInvitation })}>
-        <p className="luggage">Are you just <em>guessing numbers?</em> 😠
+        <p className="luggage">Are you just <em>guessing numbers?</em> <big>🤨</big>
         &nbsp;&nbsp;
         <small>or did you make a typo? 🤔</small></p>
       </div>
       <div className={cx('matching-invitation', { visible: ready && matchingInvitation })}>
         <p>{matchingInvitation && matchingInvitation.name}</p>
-        <p style={{ maxWidth: '450px', margin: 'auto', paddingBottom: '15px' }}>
-          Whoa there! You are early, and you're guessing codes? What's going on here??
-        </p>
+        {!FORM_ENABLED ? (
+          <p style={{ maxWidth: '450px', margin: 'auto', paddingBottom: '15px' }}>
+            Whoa there! You are early, and you're guessing codes? What's going on here??
+          </p>
+        ) : (
+          <div className="yes-no-buttons">
+            <button className="yes" onClick={onAcceptClick}>
+              Accept with pleasure<br />
+              <span className="emoji">😍</span>
+            </button>
+            <button className="no" onClick={onDeclineClick}>
+              Decline with regret<br />
+              <span className="emoji">😢</span>
+            </button>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
@@ -38,6 +55,8 @@ RSVPCodeResults.propTypes = {
   ready: PropTypes.bool, // see derivedState in RSVPApp, true if code.length === 4
   luggage: PropTypes.bool, // see derivedState in RSVPApp, true if code === '1234'
   matchingInvitation: PropTypes.object, // straight from mongoDB
+  onAcceptClick: PropTypes.func,
+  onDeclineClick: PropTypes.func
 };
 
 export default withTracker(props => ({

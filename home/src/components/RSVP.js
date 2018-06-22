@@ -8,19 +8,22 @@ class RSVP extends React.Component {
       >
         <h1>RSVP</h1>
         <p>
-          You may notice that Mike got a little carried away and made a fancy RSVP code thing, against the advice of many of his peers.
+          Mike has created an optional 4-digit code for each of you to use instead of filling in your information.
+        </p>
+        <p>
+          You need only submit an RSVP once for your whole party.
         </p>
         <a href="/rsvp/" className="inline">
           <img src="img/rsvp-card.png" />
-          <div>
-            <p>
-              Got your code?
-            </p>
-            <h2>Continue to the RSVP Form</h2>
+          <div className="button">
+            <h2>
+              Respond Online Now <br />
+              <span className="emoji">💌</span>
+            </h2>
           </div>
         </a>
         <p>
-          If you can't find your code or don't want to use it, that's okay. You can use the form anyway.
+          If you can't find your code or don't want to use it, that's okay.
         </p>
       </div>
     );

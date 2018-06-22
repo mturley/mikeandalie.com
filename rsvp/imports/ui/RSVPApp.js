@@ -44,14 +44,26 @@ class RSVPApp extends Component {
     this.setState({ code });
   }
 
+  onAcceptClick(event, invitation) {
+    event.preventDefault();
+    console.log('ACCEPT INV :)', invitation);
+  }
+
+  onDeclineClick(event, invitation) {
+    event.preventDefault();
+    console.log('DECLINE INV :(', invitation);
+  }
+
   render() {
     const { acceptedInvitations } = this.props;
     const { code, forceCodeFocus } = this.state;
     const { ready } = this.derivedState();
+
     const numConfirmedGuests = acceptedInvitations.reduce(
       (sum, invitation) => sum + invitation.numGuestsAccepted,
       0
     );
+
     return (
       <main>
         <header>
@@ -79,7 +91,11 @@ class RSVPApp extends Component {
                   ref={r => this._codeInput = r}
                 />
               </div>
-              <RSVPCodeResults {...this.derivedState()} />
+              <RSVPCodeResults
+                {...this.derivedState()}
+                onAcceptClick={this.onAcceptClick}
+                onDeclineClick={this.onDeclineClick}
+              />
             </form>
           </div>
         </section>
