@@ -5,8 +5,6 @@ import cx from 'classnames';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
-const FORM_ENABLED = true;
-
 const RSVPCodeResults = props => {
   const { ready, luggage, matchingInvitation } = props;
   const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
@@ -29,22 +27,16 @@ const RSVPCodeResults = props => {
       </div>
       <div className={cx('matching-invitation', { visible: ready && matchingInvitation })}>
         <p>{matchingInvitation && matchingInvitation.name}</p>
-        {!FORM_ENABLED ? (
-          <p style={{ maxWidth: '450px', margin: 'auto', paddingBottom: '15px' }}>
-            Whoa there! You are early, and you're guessing codes? What's going on here??
-          </p>
-        ) : (
-          <div className="yes-no-buttons">
-            <button className="yes" onClick={onAcceptClick}>
-              Accept with pleasure<br />
-              <span className="emoji">😍</span>
-            </button>
-            <button className="no" onClick={onDeclineClick}>
-              Decline with regret<br />
-              <span className="emoji">😢</span>
-            </button>
-          </div>
-        )}
+        <div className="yes-no-buttons">
+          <button className="yes" onClick={onAcceptClick}>
+            Accept with pleasure<br />
+            <span className="emoji">😍</span>
+          </button>
+          <button className="no" onClick={onDeclineClick}>
+            Decline with regret<br />
+            <span className="emoji">😢</span>
+          </button>
+        </div>
       </div>
     </React.Fragment>
   );
