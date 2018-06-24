@@ -7,6 +7,8 @@ import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
 
+const ENABLED = true;
+
 class RSVPApp extends Component {
   constructor() {
     super();
@@ -64,6 +66,32 @@ class RSVPApp extends Component {
       0
     );
 
+    const codeContainer = (
+      <div className="code-container">
+        <form>
+          <p className={cx('code-header', { visible: !ready })}>
+            Enter&nbsp;the&nbsp;4-digit&nbsp;code
+            found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
+              </p>
+          <div className="fancy-parentheses">
+            {/* TODO force the numeric keypad on mobile, see notes */}
+            <input
+              className="code"
+              value={code}
+              onChange={this.onCodeChange}
+              onBlur={forceCodeFocus ? this.focusCodeInput : null}
+              ref={r => this._codeInput = r}
+            />
+          </div>
+          <RSVPCodeResults
+            {...this.derivedState()}
+            onAcceptClick={this.onAcceptClick}
+            onDeclineClick={this.onDeclineClick}
+          />
+        </form>
+      </div>
+    );
+
     return (
       <main>
         <header>
@@ -75,29 +103,13 @@ class RSVPApp extends Component {
           <h3>{numConfirmedGuests} confirmed guests</h3>
         </header>
         <section className="main-content">
-          <div className="code-container">
-            <form>
-              <p className={cx('code-header', { visible: !ready })}>
-                Enter&nbsp;the&nbsp;4-digit&nbsp;code
-                found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
-              </p>
-              <div className="fancy-parentheses">
-                {/* TODO force the numeric keypad on mobile, see notes */}
-                <input
-                  className="code"
-                  value={code}
-                  onChange={this.onCodeChange}
-                  onBlur={forceCodeFocus ? this.focusCodeInput : null}
-                  ref={r => this._codeInput = r}
-                />
-              </div>
-              <RSVPCodeResults
-                {...this.derivedState()}
-                onAcceptClick={this.onAcceptClick}
-                onDeclineClick={this.onDeclineClick}
-              />
-            </form>
-          </div>
+          {ENABLED ? codeContainer : (
+            <React.Fragment>
+              <h2>Sorry... the RSVP form has been temporarily disabled!</h2>
+              <p>Someone is probably trying to use someone else's code. Oh well.</p>
+              <p>Please contact Mike or Alie to RSVP, or wait for this page to come back.</p>
+            </React.Fragment>
+          )}
         </section>
         <section className="spacer" />
         <footer>
