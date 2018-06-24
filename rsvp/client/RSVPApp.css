@@ -73,7 +73,7 @@ section.spacer {
   text-align: center;
 }
 
-.code-container form {
+.code-container .code-form {
   border: 2px solid white;
 }
 

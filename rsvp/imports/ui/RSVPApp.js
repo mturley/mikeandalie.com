@@ -8,17 +8,17 @@ import { Invitations } from '../api/invitations.js';
 import RSVPCodeResults from './RSVPCodeResults';
 
 const ENABLED = true;
+const forceCodeFocus = true;
 
 class RSVPApp extends Component {
-  constructor() {
-    super();
-    this.state = {
-      code: '',
-      forceCodeFocus: true
-    };
+  constructor(props) {
+    super(props);
     this.derivedState = this.derivedState.bind(this);
     this.focusCodeInput = this.focusCodeInput.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
+    this.state = {
+      code: props.code || ''
+    };
   }
 
   componentDidMount() {
@@ -48,18 +48,21 @@ class RSVPApp extends Component {
 
   onAcceptClick(event, invitation) {
     event.preventDefault();
-    console.log('ACCEPT INV :)', invitation);
+    FlowRouter.go(`/rsvp/${invitation.rsvpCode}/yes`);
   }
 
   onDeclineClick(event, invitation) {
     event.preventDefault();
-    console.log('DECLINE INV :(', invitation);
+    FlowRouter.go(`/rsvp/${invitation.rsvpCode}/no`);
   }
 
   render() {
-    const { acceptedInvitations } = this.props;
-    const { code, forceCodeFocus } = this.state;
-    const { ready } = this.derivedState();
+    const { acceptedInvitations, response } = this.props;
+    const { code, ready } = this.derivedState();
+
+    if (response !== null) {
+      console.log('RESPONDED!!', code, response);
+    }
 
     const numConfirmedGuests = acceptedInvitations.reduce(
       (sum, invitation) => sum + invitation.numGuestsAccepted,
@@ -68,7 +71,7 @@ class RSVPApp extends Component {
 
     const codeContainer = (
       <div className="code-container">
-        <form>
+        <div className="code-form">
           <p className={cx('code-header', { visible: !ready })}>
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
@@ -88,7 +91,7 @@ class RSVPApp extends Component {
             onAcceptClick={this.onAcceptClick}
             onDeclineClick={this.onDeclineClick}
           />
-        </form>
+        </div>
       </div>
     );
 
@@ -122,7 +125,10 @@ class RSVPApp extends Component {
 }
 
 RSVPApp.propTypes = {
-  acceptedInvitations: PropTypes.arrayOf(PropTypes.object)
+  acceptedInvitations: PropTypes.arrayOf(PropTypes.object),
+  code: PropTypes.string,
+  lostCode: PropTypes.bool,
+  response: PropTypes.oneOf([null, 'yes', 'no'])
 };
 
 export default withTracker(() => ({
