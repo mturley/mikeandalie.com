@@ -7,8 +7,7 @@ import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
 
-const ENABLED = true;
-const forceCodeFocus = true;
+const ENABLED = false;
 
 class RSVPApp extends Component {
   constructor(props) {
@@ -52,6 +51,10 @@ class RSVPApp extends Component {
   onUndoResponseClick(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}`);
+    Meteor.call('invitations.setAccepted', {
+      rsvpCode: invitation.rsvpCode,
+      accepted: null
+    });
   }
 
   onAcceptClick(event, invitation) {
@@ -124,7 +127,7 @@ class RSVPApp extends Component {
           {ENABLED ? codeContainer : (
             <React.Fragment>
               <h2>Sorry... the RSVP form has been temporarily disabled!</h2>
-              <p>Someone is probably trying to use someone else's code. Oh well.</p>
+              <p>Mike is working out a few last minute issues, and it will be working later today.</p>
               <p>Please contact Mike or Alie to RSVP, or wait for this page to come back.</p>
             </React.Fragment>
           )}

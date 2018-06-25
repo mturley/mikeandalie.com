@@ -1,3 +1,5 @@
+import { Invitations } from '../imports/api/invitations.js';
+
 FlowRouter.route('/', {
   name: 'RSVP.emptyCodeField',
   action() {
@@ -49,6 +51,10 @@ FlowRouter.route('/:code/accept', {
     globalState.set('code', code);
     globalState.set('lostCode', false);
     globalState.set('response', 'accept');
+    Meteor.call('invitations.setAccepted', {
+      rsvpCode: code,
+      accepted: true
+    });
   }
 });
 
@@ -58,5 +64,9 @@ FlowRouter.route('/:code/decline', {
     globalState.set('code', code);
     globalState.set('lostCode', false);
     globalState.set('response', 'decline');
+    Meteor.call('invitations.setAccepted', {
+      rsvpCode: code,
+      accepted: false
+    });
   }
 });
