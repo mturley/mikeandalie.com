@@ -5,6 +5,9 @@ import cx from 'classnames';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
+import AcceptedForm from './AcceptedForm';
+import DeclinedForm from './DeclinedForm';
+
 const RSVPCodeResults = props => {
   const {
     ready,
@@ -14,12 +17,9 @@ const RSVPCodeResults = props => {
   } = props;
   const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
   const onDeclineClick = event => props.onDeclineClick(event, matchingInvitation);
-  const onUndoResponseClick = event => props.onUndoResponseClick(event, matchingInvitation);
-  const responseStr = response === 'accept'
-    ? 'Accepted! 😍'
-    : response === 'decline'
-      ? 'Declined. 😢'
-      : '';
+  const formProps = {
+    undoResponse: () => props.undoResponse(matchingInvitation)
+  };
   return (
     <React.Fragment>
       <div className={cx('code-footer', { visible: !ready })}>
@@ -52,15 +52,9 @@ const RSVPCodeResults = props => {
         </div>
       </div>
       {ready && matchingInvitation && response && (
-        <div>
-          <p>
-            {responseStr}
-            &nbsp;&nbsp;
-            <a onClick={onUndoResponseClick} href="#">
-              Undo
-            </a>  
-          </p>
-        </div>
+        response === 'accept'
+          ? <AcceptedForm {...formProps} />
+          : <DeclinedForm {...formProps} />
       )}
     </React.Fragment>
   );
@@ -73,7 +67,7 @@ RSVPCodeResults.propTypes = {
   matchingInvitation: PropTypes.object, // straight from mongoDB
   onAcceptClick: PropTypes.func,
   onDeclineClick: PropTypes.func,
-  onUndoResponseClick: PropTypes.func,
+  undoResponse: PropTypes.func,
   response: PropTypes.oneOf([false, 'accept', 'decline']),
 };
 

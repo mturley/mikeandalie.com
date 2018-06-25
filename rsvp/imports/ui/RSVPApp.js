@@ -7,7 +7,7 @@ import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
 
-const ENABLED = false;
+const ENABLED = true;
 
 class RSVPApp extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class RSVPApp extends Component {
     this.derivedState = this.derivedState.bind(this);
     this.onCodeBlur = this.onCodeBlur.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
-    this.onUndoResponseClick = this.onUndoResponseClick.bind(this);
+    this.undoResponse = this.undoResponse.bind(this);
     this.state = {
       code: props.code || ''
     };
@@ -48,24 +48,23 @@ class RSVPApp extends Component {
     this.setState({ code });
   }
 
-  onUndoResponseClick(event, invitation) {
-    event.preventDefault();
-    FlowRouter.go(`/${invitation.rsvpCode}`);
-    Meteor.call('invitations.setAccepted', {
-      rsvpCode: invitation.rsvpCode,
-      accepted: null
-    });
-  }
-
   onAcceptClick(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/accept`);
-    alert('NOTE: this is not finished! YOUR RSVP IS NOT RECORDED. Come back tomorrow please!');
   }
 
   onDeclineClick(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/decline`);
+  }
+
+  undoResponse(invitation) {
+    FlowRouter.go(`/${invitation.rsvpCode}`); // This doesn't undo the database changes for us...
+    // ...so we call the Meteor method used by the /accept and /decline routes. (see routes.js)
+    Meteor.call('invitations.setResponse', {
+      rsvpCode: invitation.rsvpCode,
+      response: null
+    });
   }
 
   render() {
@@ -81,7 +80,7 @@ class RSVPApp extends Component {
       0
     );
 
-    const codeContainer = (
+    const rsvpCodeInput = (
       <div className="code-container">
         <div className="code-form">
           <p className={cx('code-header', { visible: !ready })}>
@@ -107,7 +106,7 @@ class RSVPApp extends Component {
             {...this.derivedState()}
             onAcceptClick={this.onAcceptClick}
             onDeclineClick={this.onDeclineClick}
-            onUndoResponseClick={this.onUndoResponseClick}
+            undoResponse={this.undoResponse}
           />
         </div>
       </div>
@@ -124,7 +123,7 @@ class RSVPApp extends Component {
           <h3>{numConfirmedGuests} confirmed guests</h3>
         </header>
         <section className="main-content">
-          {ENABLED ? codeContainer : (
+          {ENABLED ? rsvpCodeInput : (
             <React.Fragment>
               <h2>Sorry... the RSVP form has been temporarily disabled!</h2>
               <p>Mike is working out a few last minute issues, and it will be working later today.</p>
