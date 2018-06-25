@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import countdown from '../vendor/countdown';
 
+const CEREMONY_START_TIME = new Date('Sat Aug 25 2018 14:30:00 GMT-0400');
+// TODO Please do not use smart phones during the ceremony message, but only within some time of the ceremony?
+const RECEPTION_START_TIME = '???'; // TODO
+
 const countdownUnits =
   countdown.DAYS |
   countdown.HOURS |
@@ -27,7 +31,7 @@ class Countdown extends React.Component {
   componentDidMount() {
     countdown.setLabels(null, null, '', '', null, null);
     countdown(
-      new Date('2018-08-26T00:00:00.000Z'),
+      CEREMONY_START_TIME,
       ({
         days, hours, minutes, seconds,
       }) => {
