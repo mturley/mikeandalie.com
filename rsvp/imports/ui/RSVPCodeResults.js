@@ -6,15 +6,26 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
 const RSVPCodeResults = props => {
-  const { ready, luggage, matchingInvitation } = props;
+  const {
+    ready,
+    luggage,
+    matchingInvitation,
+    response
+  } = props;
   const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
   const onDeclineClick = event => props.onDeclineClick(event, matchingInvitation);
+  const onUndoResponseClick = event => props.onUndoResponseClick(event, matchingInvitation);
+  const responseStr = response === 'accept'
+    ? 'Accepted! 😍'
+    : response === 'decline'
+      ? 'Declined. 😢'
+      : '';
   return (
     <React.Fragment>
       <div className={cx('code-footer', { visible: !ready })}>
         {!luggage ? (
           <p>
-            <a className="no-code" href="#">Lost your code? Love filling out forms?</a>
+            <a className="no-code" href="/no-code">Lost your code? Love filling out forms?</a>
           </p>
         ) : (
           <p className="luggage">Hey, that's the combination on my luggage!</p>
@@ -25,7 +36,9 @@ const RSVPCodeResults = props => {
         &nbsp;&nbsp;
         <small>or&nbsp;did&nbsp;you&nbsp;make&nbsp;a&nbsp;typo?&nbsp;🤔</small></p>
       </div>
-      <div className={cx('matching-invitation', { visible: ready && matchingInvitation })}>
+      <div className={cx('matching-invitation', {
+        visible: ready && matchingInvitation && !response
+      })}>
         <p>{matchingInvitation && matchingInvitation.name}</p>
         <div className="yes-no-buttons">
           <button className="yes" onClick={onAcceptClick}>
@@ -38,6 +51,17 @@ const RSVPCodeResults = props => {
           </button>
         </div>
       </div>
+      {ready && matchingInvitation && response && (
+        <div>
+          <p>
+            {responseStr}
+            &nbsp;&nbsp;
+            <a onClick={onUndoResponseClick} href="#">
+              Undo
+            </a>  
+          </p>
+        </div>
+      )}
     </React.Fragment>
   );
 };
@@ -48,7 +72,9 @@ RSVPCodeResults.propTypes = {
   luggage: PropTypes.bool, // see derivedState in RSVPApp, true if code === '1234'
   matchingInvitation: PropTypes.object, // straight from mongoDB
   onAcceptClick: PropTypes.func,
-  onDeclineClick: PropTypes.func
+  onDeclineClick: PropTypes.func,
+  onUndoResponseClick: PropTypes.func,
+  response: PropTypes.oneOf([false, 'accept', 'decline']),
 };
 
 export default withTracker(props => ({

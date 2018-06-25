@@ -16,6 +16,7 @@ class RSVPApp extends Component {
     this.derivedState = this.derivedState.bind(this);
     this.onCodeBlur = this.onCodeBlur.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
+    this.onUndoResponseClick = this.onUndoResponseClick.bind(this);
     this.state = {
       code: props.code || ''
     };
@@ -48,6 +49,11 @@ class RSVPApp extends Component {
     this.setState({ code });
   }
 
+  onUndoResponseClick(event, invitation) {
+    event.preventDefault();
+    FlowRouter.go(`/${invitation.rsvpCode}`);
+  }
+
   onAcceptClick(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/accept`);
@@ -78,13 +84,14 @@ class RSVPApp extends Component {
           <p className={cx('code-header', { visible: !ready })}>
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
-              </p>
-          <div className="fancy-parentheses">
+          </p>
+          <div className={cx('fancy-parentheses', { visible: !response })}>
             <input
               type="number"
               pattern="[0-9]*"
               inputMode="numeric"
               noValidate
+              autoFocus
               className="code"
               value={code}
               onChange={this.onCodeChange}
@@ -93,9 +100,11 @@ class RSVPApp extends Component {
             />
           </div>
           <RSVPCodeResults
+            {...this.props}
             {...this.derivedState()}
             onAcceptClick={this.onAcceptClick}
             onDeclineClick={this.onDeclineClick}
+            onUndoResponseClick={this.onUndoResponseClick}
           />
         </div>
       </div>
@@ -134,7 +143,7 @@ RSVPApp.propTypes = {
   acceptedInvitations: PropTypes.arrayOf(PropTypes.object),
   code: PropTypes.string,
   lostCode: PropTypes.bool,
-  response: PropTypes.oneOf([null, 'yes', 'no'])
+  response: PropTypes.oneOf([false, 'accept', 'decline'])
 };
 
 export default withTracker(() => ({
