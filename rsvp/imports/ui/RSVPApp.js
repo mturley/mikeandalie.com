@@ -77,8 +77,11 @@ class RSVPApp extends Component {
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
               </p>
           <div className="fancy-parentheses">
-            {/* TODO force the numeric keypad on mobile, see notes */}
             <input
+              type="number"
+              pattern="[0-9]*"
+              inputmode="numeric"
+              novalidate
               className="code"
               value={code}
               onChange={this.onCodeChange}
