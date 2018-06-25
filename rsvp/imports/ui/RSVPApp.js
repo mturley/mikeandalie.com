@@ -14,7 +14,7 @@ class RSVPApp extends Component {
   constructor(props) {
     super(props);
     this.derivedState = this.derivedState.bind(this);
-    this.focusCodeInput = this.focusCodeInput.bind(this);
+    this.onCodeBlur = this.onCodeBlur.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.state = {
       code: props.code || ''
@@ -22,7 +22,7 @@ class RSVPApp extends Component {
   }
 
   componentDidMount() {
-    this.focusCodeInput();
+    this.onCodeBlur();
   }
 
   derivedState() {
@@ -33,10 +33,12 @@ class RSVPApp extends Component {
     return { ...this.state, codeEntered, luggage, ready };
   }
 
-  focusCodeInput() {
-    // TODO only focus when there is no code entered?
-    // TODO make the damn thing a numeric only input?
-    this._codeInput && this._codeInput.focus();
+  onCodeBlur() {
+    // Force the code input to remain focused when it's not full
+    const { ready } = this.derivedState();
+    if (!ready) {
+      this._codeInput && this._codeInput.focus();
+    }
   }
 
   onCodeChange(event) {
@@ -49,6 +51,7 @@ class RSVPApp extends Component {
   onAcceptClick(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/accept`);
+    alert('NOTE: this is not finished! YOUR RSVP IS NOT RECORDED. Come back tomorrow please!');
   }
 
   onDeclineClick(event, invitation) {
@@ -60,8 +63,8 @@ class RSVPApp extends Component {
     const { acceptedInvitations, response } = this.props;
     const { code, ready } = this.derivedState();
 
-    if (response !== null) {
-      console.log('RESPONDED!!', code, response);
+    if (ready) {
+      this._codeInput && this._codeInput.blur();
     }
 
     const numConfirmedGuests = acceptedInvitations.reduce(
@@ -85,7 +88,7 @@ class RSVPApp extends Component {
               className="code"
               value={code}
               onChange={this.onCodeChange}
-              onBlur={forceCodeFocus ? this.focusCodeInput : null}
+              onBlur={this.onCodeBlur}
               ref={r => this._codeInput = r}
             />
           </div>
