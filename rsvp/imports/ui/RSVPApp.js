@@ -48,12 +48,12 @@ class RSVPApp extends Component {
 
   onAcceptClick(event, invitation) {
     event.preventDefault();
-    FlowRouter.go(`/rsvp/${invitation.rsvpCode}/yes`);
+    FlowRouter.go(`/${invitation.rsvpCode}/accept`);
   }
 
   onDeclineClick(event, invitation) {
     event.preventDefault();
-    FlowRouter.go(`/rsvp/${invitation.rsvpCode}/no`);
+    FlowRouter.go(`/${invitation.rsvpCode}/decline`);
   }
 
   render() {
@@ -80,8 +80,8 @@ class RSVPApp extends Component {
             <input
               type="number"
               pattern="[0-9]*"
-              inputmode="numeric"
-              novalidate
+              inputMode="numeric"
+              noValidate
               className="code"
               value={code}
               onChange={this.onCodeChange}

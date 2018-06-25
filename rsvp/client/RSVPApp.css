@@ -121,6 +121,13 @@ input.code {
   outline: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 .code-footer {
   transition: all 0.5s;
   overflow: hidden;
@@ -195,11 +202,11 @@ a.no-code, .luggage {
 
 @media (max-width: 768px) {
   .code-container {
-    width: 420px;
+    width: 390px;
   }
 
   .fancy-parentheses {
-    width: 320px;
+    width: 290px;
     height: 150px;
   }
 
@@ -210,8 +217,8 @@ a.no-code, .luggage {
   }
 
   input.code {
-    width: 300px;
-    font-size: 110px;
+    width: 275px;
+    font-size: 100px;
   }
 
   .code-footer.visible {
@@ -219,4 +226,16 @@ a.no-code, .luggage {
     margin-bottom: 10px;
     height: 45px;
   }
+
+  .code-container .no-such-code.visible {
+    height: 80px;
+  }
+
+  .code-container .matching-invitation.visible {
+    height: 235px;
+  }
+
+  .yes-no-buttons button {
+    max-width: calc(50% - 30px);
+  } 
 }

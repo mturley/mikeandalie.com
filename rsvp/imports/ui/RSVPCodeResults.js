@@ -23,7 +23,7 @@ const RSVPCodeResults = props => {
       <div className={cx('no-such-code', { visible: ready && !matchingInvitation })}>
         <p className="luggage">Are you just <em>guessing numbers?</em> <big>🤨</big>
         &nbsp;&nbsp;
-        <small>or did you make a typo? 🤔</small></p>
+        <small>or&nbsp;did&nbsp;you&nbsp;make&nbsp;a&nbsp;typo?&nbsp;🤔</small></p>
       </div>
       <div className={cx('matching-invitation', { visible: ready && matchingInvitation })}>
         <p>{matchingInvitation && matchingInvitation.name}</p>

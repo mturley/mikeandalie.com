@@ -1,4 +1,4 @@
-FlowRouter.route('/rsvp', {
+FlowRouter.route('/', {
   name: 'RSVP.emptyCodeField',
   action() {
     globalState.set('code', '');
@@ -7,7 +7,7 @@ FlowRouter.route('/rsvp', {
   }
 });
 
-FlowRouter.route('/rsvp/no-code', {
+FlowRouter.route('/no-code', {
   name: 'RSVP.emptyCodeField',
   action() {
     globalState.set('code', '');
@@ -16,25 +16,25 @@ FlowRouter.route('/rsvp/no-code', {
   }
 });
 
-FlowRouter.route('/rsvp/no-code/yes', {
+FlowRouter.route('/no-code/accept', {
   name: 'RSVP.emptyCodeField',
   action() {
     globalState.set('code', '');
     globalState.set('lostCode', true);
-    globalState.set('response', 'yes');
+    globalState.set('response', 'accept');
   }
 });
 
-FlowRouter.route('/rsvp/no-code/no', {
+FlowRouter.route('/no-code/decline', {
   name: 'RSVP.emptyCodeField',
   action() {
     globalState.set('code', '');
     globalState.set('lostCode', true);
-    globalState.set('response', 'no');
+    globalState.set('response', 'decline');
   }
 });
 
-FlowRouter.route('/rsvp/:code', {
+FlowRouter.route('/:code', {
   name: 'RSVP.emptyCodeField',
   action({ code }) {
     globalState.set('code', code);
@@ -43,20 +43,20 @@ FlowRouter.route('/rsvp/:code', {
   }
 });
 
-FlowRouter.route('/rsvp/:code/yes', {
+FlowRouter.route('/:code/accept', {
   name: 'RSVP.emptyCodeField',
   action({ code }) {
     globalState.set('code', code);
     globalState.set('lostCode', false);
-    globalState.set('response', 'yes');
+    globalState.set('response', 'accept');
   }
 });
 
-FlowRouter.route('/rsvp/:code/no', {
+FlowRouter.route('/:code/decline', {
   name: 'RSVP.emptyCodeField',
   action({ code }) {
     globalState.set('code', code);
     globalState.set('lostCode', false);
-    globalState.set('response', 'no');
+    globalState.set('response', 'decline');
   }
 });
