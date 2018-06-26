@@ -22,9 +22,10 @@ class RSVP extends React.Component {
             </h2>
           </div>
         </a>
-        <p>
-          If you can't find your code or don't want to use it, that's okay.
-        </p>
+        <p><small>
+          If you can't find your code or don't want to use it, that's okay.<br />
+          It's not required; It's just for fun, convenience, and hubris. ❤️
+        </small></p>
       </div>
     );
   }

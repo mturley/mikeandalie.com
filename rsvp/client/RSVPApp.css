@@ -223,6 +223,33 @@ a.no-code, .luggage {
   margin: 15px;
 }
 
+p.extra-side-margins {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+p.extra-bottom-margin {
+  margin-bottom: 30px;
+}
+
+.no-top-margin {
+  margin-top: 0;
+}
+
+.small-padding {
+  padding-top: 5px;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0;
+}
+
+.envelope-hand {
+  position: relative;
+  top: -20px;
+  left: -5px;
+}
+
 @media (max-width: 768px) {
   .code-container {
     width: 390px;

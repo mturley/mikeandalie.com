@@ -7,7 +7,7 @@ import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
 
-const ENABLED = false;
+const ENABLED = true;
 
 class RSVPApp extends Component {
   constructor(props) {
