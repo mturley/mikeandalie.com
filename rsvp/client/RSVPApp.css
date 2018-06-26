@@ -20,12 +20,12 @@ main {
   min-height: calc(100vh);
 }
 
-header {
-  padding: 50px;
+main a {
+  vertical-align: baseline;
 }
 
-a {
-  vertical-align: baseline;
+header {
+  padding: 50px;
 }
 
 header a.back-home {
@@ -250,7 +250,7 @@ p.extra-bottom-margin {
 
 .envelope-hand {
   position: relative;
-  top: -20px;
+  top: -26px;
   left: -5px;
 }
 
