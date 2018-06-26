@@ -24,6 +24,10 @@ header {
   padding: 50px;
 }
 
+a {
+  vertical-align: baseline;
+}
+
 header a.back-home {
   position: absolute;
   top: 0;

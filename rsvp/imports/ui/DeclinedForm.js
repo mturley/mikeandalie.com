@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import A from './PreventDefault';
 
+import fragments from './fragments';
+
 const DeclinedForm = props => {
-  const undo = <A onClick={props.undoResponse} />;
+  const undo = <A onClick={props.undoResponse}>Undo</A>;
   return (
     <div>
       <p>
@@ -15,24 +17,10 @@ const DeclinedForm = props => {
       <p className="extra-side-margins">
         If you want to change your response, you can return to this page at any time before July 25th.
       </p>
-      <h3 className="emoji">
-        📨
-        <span className="envelope-hand">👌</span>
-      </h3>
-      <h3 className="no-top-margin small-padding">You're all set.</h3>
-      <p className="end-of-rsvp">
-        Please enjoy our photo gallery at <a href="/">mikeandalie.com</a>.<br />
-        Just click on Memories! 📸
-      </p>
-      <p className="extra-bottom-margin extra-side-margins">
-        <small>
-          There will also be a collection of photos at mikeandalie.com/photos after the wedding.
-        </small>
-      </p>
+      <fragments.AllSet />
+      <fragments.EnjoyTheGallery />
       <p>We can't wait.</p>
-      <p>
-        <span className="cursive">Mike 💘 Alie</span>
-      </p>
+      <fragments.MikeHeartAlie />
     </div>
   );
 };

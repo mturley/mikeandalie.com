@@ -12,7 +12,7 @@ const PreventDefault = props => {
   // TODO: learn why. Apologies to anyone who ends up reading this code.
   return (
     <a href="#" {...props} onClick={whoEverWantsTheDefault}>
-      Undo
+      {props.children && props.children}
     </a>
   );
 };

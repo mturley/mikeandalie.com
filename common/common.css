@@ -25,6 +25,14 @@ h2 strong {
   font-size: 1.1em;
 }
 
+a.no-underline {
+  text-decoration: none;
+}
+
+a.no-underline:hover {
+  text-decoration: underline;
+}
+
 .cursive {
   font-family: 'Dancing Script', cursive;
   font-weight: normal;
