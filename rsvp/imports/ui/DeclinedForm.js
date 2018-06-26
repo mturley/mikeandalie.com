@@ -8,9 +8,13 @@ const DeclinedForm = props => {
   return (
     <div>
       <p>
-        Declined. 😢 {undo}
+        You've declined. 😢 Are you sure? {undo}
       </p>
-      <h2>TODO: Add "are you sure" messaging here</h2>
+      <h2 className="cursive">Thank You</h2>
+      <h3>We're sorry to hear you can't make it!</h3>
+      <p>
+        If you need to change your response, you can return to this page at any time before the wedding.
+      </p>
     </div>
   );
 };

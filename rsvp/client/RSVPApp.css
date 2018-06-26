@@ -215,6 +215,14 @@ a.no-code, .luggage {
   color: red;
 }
 
+.code-container {
+  width: 504px;
+}
+
+.post-response-form h2.cursive {
+  margin: 15px;
+}
+
 @media (max-width: 768px) {
   .code-container {
     width: 390px;
@@ -243,6 +251,10 @@ a.no-code, .luggage {
     margin-top: -10px;
     margin-bottom: 10px;
     height: 45px;
+  }
+
+  .code-container {
+    width: 390px;
   }
 
   .code-container .no-such-code.visible {

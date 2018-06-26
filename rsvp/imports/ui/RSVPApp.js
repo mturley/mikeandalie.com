@@ -7,7 +7,7 @@ import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
 
-const ENABLED = true;
+const ENABLED = false;
 
 class RSVPApp extends Component {
   constructor(props) {
@@ -125,9 +125,10 @@ class RSVPApp extends Component {
         <section className="main-content">
           {ENABLED ? rsvpCodeInput : (
             <React.Fragment>
-              <h2>Sorry... the RSVP form has been temporarily disabled!</h2>
-              <p>Mike is working out a few last minute issues, and it will be working later today.</p>
+              <p>Aw jeez. I sent the invitations out yesterday, but I'm still finishing up this website.</p>
+              <h3>Trust me, it's cute, you'll love it. Come back in a few hours. ❤️</h3>
               <p>Please contact Mike or Alie to RSVP, or wait for this page to come back.</p>
+              <p>Any minute now, I promise.. Love you Alie...</p>
             </React.Fragment>
           )}
         </section>
@@ -140,6 +141,8 @@ class RSVPApp extends Component {
     );
   }
 }
+
+// TODO maybe "Thank you for responding before July 25th!" at the footer when you're done?
 
 RSVPApp.propTypes = {
   acceptedInvitations: PropTypes.arrayOf(PropTypes.object),
