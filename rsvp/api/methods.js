@@ -18,7 +18,7 @@ Meteor.methods({
   'invitations.guests.add'({ invitation }) {
     Invitations.update(
       { _id: invitation._id },
-      { $push: { guests: { name: '' } } }
+      { $push: { guests: { name: '', allergy: null } } }
     );
   },
 

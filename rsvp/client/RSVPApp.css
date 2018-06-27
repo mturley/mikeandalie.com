@@ -79,7 +79,7 @@ section.spacer {
 
 .code-container .code-form {
   border: 2px solid transparent;
-  transition: all 0.5s;
+  transition: border 0.5s;
   margin-top: -50px;
 }
 

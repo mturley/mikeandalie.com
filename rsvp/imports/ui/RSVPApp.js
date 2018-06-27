@@ -76,7 +76,7 @@ class RSVPApp extends Component {
 
   render() {
     const { acceptedInvitations, response } = this.props;
-    const { code, ready } = this.derivedState();
+    const { code, ready, isEditMode } = this.derivedState();
 
     if (ready) {
       this._codeInput && this._codeInput.blur();
@@ -121,7 +121,7 @@ class RSVPApp extends Component {
 
     const rsvpCodeInput = (
       <div className="code-container">
-        <div className={cx('code-form', { 'border': !response })}>
+        <div className={cx('code-form', { 'border': !isEditMode })}>
           <p className={cx('code-header', { visible: !ready })}>
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
@@ -141,8 +141,8 @@ class RSVPApp extends Component {
             />
           </div>
           <RSVPCodeResults {...descendantProps} />
+          <FormBody {...descendantProps} />
         </div>
-        <FormBody {...descendantProps} />
       </div>
     );
 
