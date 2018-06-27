@@ -19,8 +19,10 @@ const DeclinedForm = props => {
       </p>
       <fragments.AllSet />
       <fragments.EnjoyTheGallery />
-      <p>We can't wait.</p>
-      <fragments.MikeHeartAlie />
+      <p className="no-bottom-margin">
+        <small>We can't wait.</small>
+      </p>
+      <fragments.MikeHeartAlie className="no-top-margin" />
     </div>
   );
 };

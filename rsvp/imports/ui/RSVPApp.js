@@ -76,7 +76,7 @@ class RSVPApp extends Component {
     }
 
     const numConfirmedGuests = acceptedInvitations.reduce(
-      (sum, invitation) => sum + invitation.numGuestsAccepted,
+      (sum, invitation) => sum + invitation.numGuestsAttending,
       0
     );
 
@@ -116,7 +116,7 @@ class RSVPApp extends Component {
       <main>
         <header>
           <a className="back-home" href="/">
-            <img src="img/back-arrow.svg" />
+            <img src="/rsvp/img/back-arrow.svg" />
             <span>Mike &amp; Alie</span>
           </a>
           <h1>RSVP</h1>
@@ -135,7 +135,10 @@ class RSVPApp extends Component {
         <section className="spacer" />
         <footer>
           <h4>Please respond by July 25th. ❤️</h4>
-          <h5>Yes, <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a> to show off. 👨‍💻</h5>
+          <h5>
+            <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a>
+            to show off 👨‍💻 and because other wedding sites would steal your information.
+          </h5>
         </footer>
       </main>
     );

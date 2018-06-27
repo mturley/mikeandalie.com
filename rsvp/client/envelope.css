@@ -1,0 +1,111 @@
+/*
+  https://stackoverflow.com/a/8083801/354065
+  Thanks Andrew!
+*/
+
+.envelope {
+  width: 460px;
+  margin: 0 auto;
+  background: #fff5ee;
+  -moz-box-shadow: 0 1px 5px #ccc;
+  -webkit-box-shadow: 0 1px 5px #ccc;
+  box-shadow: 0 1px 5px #ccc;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  z-index: 0;
+  position: relative;
+  color: #808080;
+}
+
+.envelope .body {
+  padding-top: 15px;
+}
+
+.envelope .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 99999;
+}
+
+.envelope .footer {
+  margin-top: -5px;
+  margin-bottom: -10px;
+  padding-bottom: 1px;
+}
+
+.envelope.edit-mode .footer p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.envelope .closed {
+  z-index: 1;
+  width: 460px;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 80px;
+  margin-bottom: -5px;
+}
+.envelope .closed .mid {
+  /*background: #fff;*/
+  width: 360px;
+  margin: 0 auto;
+  margin-top: -70px;
+  height: 80px;
+  background-color: #fff5ee;
+  -moz-box-shadow: 0 1px 5px #ccc;
+  -webkit-box-shadow: 0 1px 5px #ccc;
+  box-shadow: 0 1px 5px #ccc;
+  -webkit-border-radius: 12px;
+}
+.envelope .left,
+.envelope .right {
+  display: none;
+}
+.envelope .closed .right {
+  display: block;
+  width: 0;
+  height: 100px;
+  border-left: 60px solid #fff5ee;
+  border-right: 1px solid #ccc;
+  margin-left: 384px;
+  -webkit-transform: rotate(39deg);
+  margin-top: -34px;
+  box-shadow: 1px -1px 1px #ccc;
+}
+.envelope .closed .left {
+  display: block;
+  width: 0;
+  height: 100px;
+  border-right: 60px solid #fff5ee;
+  border-left: 1px solid #ccc;
+  margin-left: 16px;
+  -webkit-transform: rotate(-39deg);
+  margin-top: -100px;
+  box-shadow: -1px -1px 1px #ccc;
+}
+
+@media (max-width: 768px) {
+  .envelope,
+  .envelope .closed {
+    width: 350px;
+  }
+  .envelope .closed .mid {
+    width: 250px;
+  }
+  .envelope .closed .right {
+    margin-left: 274px;
+  }
+  .envelope .header h3 {
+    margin-top: 14px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}

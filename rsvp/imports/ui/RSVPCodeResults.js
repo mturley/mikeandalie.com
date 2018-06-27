@@ -18,7 +18,8 @@ const RSVPCodeResults = props => {
   const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
   const onDeclineClick = event => props.onDeclineClick(event, matchingInvitation);
   const formProps = {
-    undoResponse: () => props.undoResponse(matchingInvitation)
+    undoResponse: () => props.undoResponse(matchingInvitation),
+    invitation: matchingInvitation
   };
   return (
     <React.Fragment>
