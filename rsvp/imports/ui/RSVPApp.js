@@ -8,12 +8,15 @@ import { Invitations } from '../api/invitations.js';
 import RSVPCodeResults from './RSVPCodeResults';
 import FormBody from './FormBody';
 
+import A from './PreventDefault';
+
 const ENABLED = true;
 
 class RSVPApp extends Component {
   constructor(props) {
     super(props);
     this.derivedState = this.derivedState.bind(this);
+    this.resetState = this.resetState.bind(this);
     this.onCodeBlur = this.onCodeBlur.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.undoResponse = this.undoResponse.bind(this);
@@ -29,11 +32,20 @@ class RSVPApp extends Component {
   }
 
   derivedState() {
+    const { lostCode } = this.props;
     const { code } = this.state;
     const luggage = code === '1234';
     const codeEntered = code.length === 4;
-    const ready = codeEntered && !luggage;
+    const ready = (codeEntered && !luggage) || lostCode;
     return { ...this.state, codeEntered, luggage, ready };
+  }
+
+  resetState() {
+    this.setState({
+      code: '',
+      isEditMode: false
+    });
+    FlowRouter.go('/');
   }
 
   onCodeBlur() {
@@ -53,21 +65,26 @@ class RSVPApp extends Component {
 
   accept(event, invitation) {
     event.preventDefault();
-    FlowRouter.go(`/${invitation.rsvpCode}/accept`);
+    const code = invitation ? invitation.rsvpCode : 'no-code';
+    FlowRouter.go(`/${code}/accept`);
   }
 
   decline(event, invitation) {
     event.preventDefault();
-    FlowRouter.go(`/${invitation.rsvpCode}/decline`);
+    const code = invitation ? invitation.rsvpCode : 'no-code';
+    FlowRouter.go(`/${code}/decline`);
   }
 
   undoResponse({ invitation }) {
-    FlowRouter.go(`/${invitation.rsvpCode}`); // This doesn't undo the database changes for us...
+    const code = invitation ? invitation.rsvpCode : 'no-code';
+    FlowRouter.go(`/${code}`); // This doesn't undo the database changes for us...
     // ...so we call the Meteor method used by the /accept and /decline routes. (see routes.js)
-    Meteor.call('invitations.setResponse', {
-      rsvpCode: invitation.rsvpCode,
-      response: null
-    });
+    if (invitation) {
+      Meteor.call('invitations.setResponse', {
+        rsvpCode: code,
+        response: null
+      });
+    }
   }
 
   setEditMode(isEditMode) {
@@ -75,7 +92,7 @@ class RSVPApp extends Component {
   }
 
   render() {
-    const { acceptedInvitations, response } = this.props;
+    const { acceptedInvitations, response, lostCode } = this.props;
     const { code, ready, isEditMode } = this.derivedState();
 
     if (ready) {
@@ -87,7 +104,6 @@ class RSVPApp extends Component {
       0
     );
 
-    const todo = (a1, a2) => console.log('TODO: Meteor.call for updating the database', a1, a2);
     const descendantProps = {
       ...this.props,
       ...this.derivedState(),
@@ -126,7 +142,7 @@ class RSVPApp extends Component {
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
           </p>
-          <div className={cx('fancy-parentheses', { visible: !response })}>
+          <div className={cx('fancy-parentheses', { visible: !response && !lostCode })}>
             <input
               type="number"
               pattern="[0-9]*"
@@ -140,6 +156,17 @@ class RSVPApp extends Component {
               ref={r => this._codeInput = r}
             />
           </div>
+          {lostCode && (
+            <div>
+              <p className="small">
+                You can proceed without a code, but it will involve more typing!
+              </p>
+              <p>
+                👈&nbsp;
+                <A className="reset-state" onClick={this.resetState}>Found your RSVP Code?</A>
+              </p>
+            </div>
+          )}
           <RSVPCodeResults {...descendantProps} />
           <FormBody {...descendantProps} />
         </div>

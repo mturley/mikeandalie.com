@@ -42,7 +42,6 @@ FlowRouter.route('/no-code/accept', {
     setState('code', '');
     setState('lostCode', true);
     setState('response', 'accept');
-    console.log('[TODO] your thing was not submitted, yell at mike');
     // TODO handle no-code submission
     /*
     Meteor.call('invitations.setResponse', {
@@ -59,7 +58,6 @@ FlowRouter.route('/no-code/decline', {
     setState('code', '');
     setState('lostCode', true);
     setState('response', 'decline');
-    console.log('[TODO] your thing was not submitted, yell at mike');
     // TODO handle no-code submission
     /*
     Meteor.call('invitations.setResponse', {

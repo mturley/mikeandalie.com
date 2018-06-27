@@ -385,6 +385,10 @@ input.guest-allergy::placeholder {
   opacity: 0.5;
 }
 
+.reset-state {
+  color: white;
+}
+
 @media (max-width: 768px) {
 
   .envelope .header h3 {

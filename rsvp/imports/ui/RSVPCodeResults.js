@@ -5,10 +5,13 @@ import cx from 'classnames';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
+import A from './PreventDefault';
+
 const RSVPCodeResults = props => {
   const {
     ready,
     luggage,
+    lostCode,
     invitation,
     response,
     db
@@ -22,19 +25,20 @@ const RSVPCodeResults = props => {
       <div className={cx('code-footer', { visible: !ready })}>
         {!luggage ? (
           <p>
-            <a className="no-code" href="/no-code">Lost your code? Love filling out forms?</a>
+            {/*<a className="no-code" href="/no-code">Lost your code? Love filling out forms?</a>*/}
+            <A className="no-code" onClick={() => alert('Hmm... Mike didn\'t finish this part yet... you might want to call him. Try your code though, that is working great!')}>Lost your code? Love filling out forms?</A>
           </p>
         ) : (
           <p className="luggage">Hey, that's the combination on my luggage!</p>
         )}
       </div>
-      <div className={cx('no-such-code', { visible: ready && !invitation })}>
+      <div className={cx('no-such-code', { visible: ready && !invitation && !lostCode })}>
         <p className="luggage">Are you just <em>guessing numbers?</em> <big>🤨</big>
         &nbsp;&nbsp;
         <small>or&nbsp;did&nbsp;you&nbsp;make&nbsp;a&nbsp;typo?&nbsp;🤔</small></p>
       </div>
       <div className={cx('matching-invitation', {
-        visible: ready && invitation && !response
+        visible: (ready && invitation && !response) || lostCode
       })}>
         <p>{invitation && invitation.name}</p>
         <div className="yes-no-buttons">
