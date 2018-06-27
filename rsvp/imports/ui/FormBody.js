@@ -12,7 +12,7 @@ const FormBody = props => {
   const formProps = {
     ...props,
     invitation,
-    undoResponse: () => db.undoResponse(invitation)
+    undoResponse: () => db.undoResponse({ invitation })
   };
   return (ready && invitation && response) ? (
     response === 'accept'

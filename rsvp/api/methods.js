@@ -6,5 +6,39 @@ Meteor.methods({
       { rsvpCode: parseInt(rsvpCode, 10) },
       { $set: { response } }
     );
-  }
+  },
+
+  'invitations.update'({ invitation, newInvitation }) {
+    Invitations.update(
+      { _id: invitation._id },
+      { $set: { ...newInvitation } }
+    );
+  },
+  
+  'invitations.guests.add'({ invitation }) {
+    Invitations.update(
+      { _id: invitation._id },
+      { $push: { guests: { name: '' } } }
+    );
+  },
+
+  'invitations.guests.update'({ invitation, index, newGuest }) {
+    const updatedGuests = invitation.guests.map((guest, i) => {
+      if (i === index) return newGuest;
+      return guest;
+    });
+    console.log('updating guests: ', updatedGuests);
+    Invitations.update(
+      { _id: invitation._id },
+      { $set: { guests: updatedGuests } }
+    );
+  },
+
+  'invitations.guests.remove'({ invitation, guest }) {
+    const filteredGuests = invitation.guests.filter(g => g.name !== guest.name);
+    Invitations.update(
+      { _id: invitation._id, },
+      { $set: { guests: filteredGuests } }
+    );
+  },
 });

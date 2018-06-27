@@ -23,30 +23,45 @@ const Invitation = props => {
   } = props;
 
   const guests = invitation && invitation.guests || [];
-  const plural = guests.length > 1;
+  const plural = guests.length !== 1;
 
   const nil = prop => prop === undefined || prop === null;
   const allergiesOff = invitation.guests.every(guest => nil(guest.allergy));
   const allergiesFalsy = invitation.guests.every(guest => !guest.allergy);
 
+  const onAddGuestClick = () => {
+    db.addGuest({ invitation });
+  };
+
   const onNameClick = () => setEditMode(true);
 
   const onGuestNameChange = (index, event) => {
     const { target: { value } } = event;
-    db.updateGuest(invitation, index, { name: value });
+    db.updateGuest({
+      invitation,
+      index,
+      newGuest: { name: value }
+    });
   };
 
   const onGuestAllergyChange = (index, event) => {
     const { target: { value } } = event;
-    db.updateGuest(invitation, index, { allergy: value });
+    db.updateGuest({
+      invitation,
+      index,
+      newGuest: { allergy: value }
+    });
   }
 
   const toggleAllergies = () => {
-    db.updateInvitation(invitation, {
-      guests: invitation.guests.map(guest => ({
-        ...guest,
-        allergy: allergiesOff ? '' : null
-      }))
+    db.updateInvitation({
+      invitation,
+      newInvitation: {
+        guests: invitation.guests.map(guest => ({
+          ...guest,
+          allergy: allergiesOff ? '' : null
+        }))
+      }
     });
   };
 
@@ -58,14 +73,21 @@ const Invitation = props => {
 
   const onCommentChange = event => {
     const { target: { value } } = event;
-    console.log('TODO: save the real value', value);
-    db.updateInvitation(invitation, { comment: value });
+    db.updateInvitation({
+      invitation,
+      newInvitation: { comment: value }
+    });
   };
 
   const RemoveGuestButton = buttonProps => (
     <A
       className="remove-button"
-      onClick={() => db.removeGuest(invitation, buttonProps.index)}
+      onClick={() => {
+        db.removeGuest({
+          invitation,
+          guest: buttonProps.guest
+        })
+      }}
     >
       ❌
     </A>
@@ -95,8 +117,8 @@ const Invitation = props => {
       <div className="body">
         <div className="guest-count">
           <p className="emoji">
-            {guests.map(guest => (
-              <span key={guest.name}>
+            {guests.map((guest, index) => (
+              <span key={index}>
                 🍽️
               </span>
             ))}
@@ -105,7 +127,7 @@ const Invitation = props => {
             {guests.length}&nbsp;
             {plural ? 'guests' : 'guest'}
             {isEditMode && (
-              <A className="add-guest" onClick={db.addGuest}>
+              <A className="add-guest" onClick={onAddGuestClick}>
                 Add a Guest
               </A>
             )}
@@ -119,7 +141,7 @@ const Invitation = props => {
           </strong></small>
         </h4>
         {guests.map((guest, index) => (
-          <div className="guest-name-plate" key={guest.name}>
+          <div className="guest-name-plate" key={index}>
             {!isEditMode ? (
               <A className="cursive name" onClick={onNameClick}>
                 {guest.name}
@@ -129,9 +151,10 @@ const Invitation = props => {
                 <input
                   className="guest-name"
                   value={guest.name}
+                  placeholder="Guest Name"
                   onChange={event => onGuestNameChange(index, event)}
                 />
-                <RemoveGuestButton index={index} />
+                <RemoveGuestButton guest={guest} />
               </React.Fragment>
             )}
             {!isEditMode ? (
@@ -169,7 +192,7 @@ const Invitation = props => {
       ) : (
         <div className="allergies">
           <h5>
-            Does anyone in your party has a food allergy?&nbsp;
+            Does anyone in your party have a food allergy?&nbsp;
             <input
               type="checkbox"
               className="food-allergies"
@@ -196,9 +219,8 @@ const Invitation = props => {
           <textarea
             placeholder="Congratulations? Thoughtful Stories? Embarassing Stories?"
             onChange={onCommentChange}
-          >
-            {invitation.comment}
-          </textarea>
+            value={invitation.comment}
+          />
         </div>
       )}
       {DEBUG_MODE && (

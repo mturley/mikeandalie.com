@@ -334,6 +334,10 @@ p.extra-bottom-margin {
   width: 250px;
 }
 
+.envelope.edit-mode input.guest-name::placeholder {
+  opacity: 0.5;
+}
+
 .envelope.edit-mode .remove-button {
   text-decoration: none;
   opacity: 0.2;

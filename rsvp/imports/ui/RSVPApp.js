@@ -61,7 +61,7 @@ class RSVPApp extends Component {
     FlowRouter.go(`/${invitation.rsvpCode}/decline`);
   }
 
-  undoResponse(invitation) {
+  undoResponse({ invitation }) {
     FlowRouter.go(`/${invitation.rsvpCode}`); // This doesn't undo the database changes for us...
     // ...so we call the Meteor method used by the /accept and /decline routes. (see routes.js)
     Meteor.call('invitations.setResponse', {
@@ -75,7 +75,7 @@ class RSVPApp extends Component {
   }
 
   render() {
-    const { acceptedInvitations, matchingInvitation, response } = this.props;
+    const { acceptedInvitations, response } = this.props;
     const { code, ready } = this.derivedState();
 
     if (ready) {
@@ -95,10 +95,26 @@ class RSVPApp extends Component {
         accept: this.accept,
         decline: this.decline,
         undoResponse: this.undoResponse,
-        updateInvitation: todo,
-        addGuest: todo,
-        removeGuest: todo,
-        updateGuest: todo,
+        updateInvitation: ({ invitation, newInvitation }) =>
+          Meteor.call(
+            'invitations.update',
+            { invitation, newInvitation }
+          ),
+        addGuest: ({ invitation }) =>
+          Meteor.call(
+            'invitations.guests.add',
+            { invitation }
+          ),
+        updateGuest: ({ invitation, index, newGuest }) =>
+          Meteor.call(
+            'invitations.guests.update',
+            { invitation, index, newGuest }
+          ),
+        removeGuest: ({ invitation, guest }) =>
+          Meteor.call(
+            'invitations.guests.remove',
+            { invitation, guest }
+          )
       },
       setEditMode: this.setEditMode
     };
