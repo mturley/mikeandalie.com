@@ -83,10 +83,13 @@ const Invitation = props => {
     <A
       className="remove-button"
       onClick={() => {
-        db.removeGuest({
-          invitation,
-          guest: buttonProps.guest
-        })
+        const { name } = buttonProps.guest
+        if(!name || confirm(`Are you sure you want to remove ${name} from your invitation?`)) {
+          db.removeGuest({
+            invitation,
+            guest: buttonProps.guest
+          })
+        }
       }}
     >
       ❌
@@ -126,11 +129,6 @@ const Invitation = props => {
           <p className="number">
             {guests.length}&nbsp;
             {plural ? 'guests' : 'guest'}
-            {isEditMode && (
-              <A className="add-guest" onClick={onAddGuestClick}>
-                Add a Guest
-              </A>
-            )}
           </p>
         </div>
         <h4 className="no-bottom-margin">
@@ -144,7 +142,7 @@ const Invitation = props => {
           <div className="guest-name-plate" key={index}>
             {!isEditMode ? (
               <A className="cursive name" onClick={onNameClick}>
-                {guest.name}
+                {guest.name || '( blank )'}
               </A>
             ) : (
               <React.Fragment>
@@ -179,6 +177,14 @@ const Invitation = props => {
             )}
           </div>
         ))}
+        {isEditMode && (
+          <p class="small">
+            +&nbsp;
+            <A className="add-guest" onClick={onAddGuestClick}>
+              Add a Guest
+            </A>
+          </p>
+        )}
       </div>
       {!isEditMode ? (
         <div className="allergies">

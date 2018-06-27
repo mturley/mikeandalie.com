@@ -24,7 +24,7 @@ const AcceptedForm = props => {
   const DoneEditingButton = buttonProps => (
     <span>
       Done Editing?&nbsp;
-      <A onClick={toggleEditMode}>{buttonProps.children || 'Save Changes'}</A>
+      <A onClick={toggleEditMode}>{buttonProps.children || 'Save Changes ✔'}</A>
     </span>
   );
 
@@ -36,8 +36,10 @@ const AcceptedForm = props => {
             Your response is confirmed! 🎉<br />
             We think you just made a great decision. <UndoButton />
           </p>
-
           <h2 className="cursive no-bottom-margin">Thank You! 😍</h2>
+          <p className="small">
+            If the information below is correct, you are done!
+          </p>
         </div>
       )}
 
