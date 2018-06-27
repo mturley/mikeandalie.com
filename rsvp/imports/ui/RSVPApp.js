@@ -16,8 +16,10 @@ class RSVPApp extends Component {
     this.onCodeBlur = this.onCodeBlur.bind(this);
     this.onCodeChange = this.onCodeChange.bind(this);
     this.undoResponse = this.undoResponse.bind(this);
+    this.setEditMode = this.setEditMode.bind(this);
     this.state = {
-      code: props.code || ''
+      code: props.code || '',
+      isEditMode: false
     };
   }
 
@@ -48,12 +50,12 @@ class RSVPApp extends Component {
     this.setState({ code });
   }
 
-  onAcceptClick(event, invitation) {
+  accept(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/accept`);
   }
 
-  onDeclineClick(event, invitation) {
+  decline(event, invitation) {
     event.preventDefault();
     FlowRouter.go(`/${invitation.rsvpCode}/decline`);
   }
@@ -67,9 +69,13 @@ class RSVPApp extends Component {
     });
   }
 
+  setEditMode(isEditMode) {
+    this.setState({ isEditMode });
+  }
+
   render() {
     const { acceptedInvitations, response } = this.props;
-    const { code, ready } = this.derivedState();
+    const { code, ready, isEditMode } = this.derivedState();
 
     if (ready) {
       this._codeInput && this._codeInput.blur();
@@ -80,9 +86,20 @@ class RSVPApp extends Component {
       0
     );
 
+    const todo = (a1, a2) => console.log('TODO: Meteor.call for updating the database', a1, a2);
+    const db = {
+      accept: this.accept,
+      decline: this.decline,
+      undoResponse: this.undoResponse,
+      updateInvitation: todo,
+      addGuest: todo,
+      removeGuest: todo,
+      updateGuest: todo,
+    };
+
     const rsvpCodeInput = (
       <div className="code-container">
-        <div className="code-form">
+        <div className={cx('code-form', { 'edit-mode': isEditMode })}>
           <p className={cx('code-header', { visible: !ready })}>
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
@@ -104,9 +121,8 @@ class RSVPApp extends Component {
           <RSVPCodeResults
             {...this.props}
             {...this.derivedState()}
-            onAcceptClick={this.onAcceptClick}
-            onDeclineClick={this.onDeclineClick}
-            undoResponse={this.undoResponse}
+            db={db}
+            setEditMode={this.setEditMode}
           />
         </div>
       </div>
@@ -136,8 +152,8 @@ class RSVPApp extends Component {
         <footer>
           <h4>Please respond by July 25th. ❤️</h4>
           <h5>
-            <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a>
-            to show off 👨‍💻 and because other wedding sites would steal your information.
+            <a href="https://github.com/mturley/mikeandalie.com">Mike made this</a>&nbsp;
+            to show off his skillz 👨‍💻 and because he <a target="_blank" href="https://www.bookmorebrides.com/weddingwire-vs-the-knot-advertising/">doesn't like other wedding websites</a>.
           </h5>
         </footer>
       </main>

@@ -16,6 +16,7 @@ const Invitation = props => {
   const {
     invitation,
     isEditMode,
+    setEditMode,
     EditButton,
     DoneEditingButton,
     updateInvitation,
@@ -24,7 +25,9 @@ const Invitation = props => {
     updateGuest
   } = props;
 
-  const guests = invitation.guests || [];
+  console.log('INVITATION PROPS', props);
+
+  const guests = invitation && invitation.guests || [];
   const plural = guests.length > 1;
 
   const nil = prop => prop === undefined || prop === null;
@@ -48,6 +51,12 @@ const Invitation = props => {
         allergy: allergiesOff ? '' : null
       }))
     });
+  };
+
+  const editAllergies = () => {
+    // Only visible when allergies are empty, so we can just toggle.
+    toggleAllergies();
+    setEditMode(true);
   };
 
   const onCommentChange = event => {
@@ -112,7 +121,7 @@ const Invitation = props => {
           </strong></small>
         </h4>
         {guests.map((guest, index) => (
-          <p key={guest.name}>
+          <div className="guest-name-plate" key={guest.name}>
             {!isEditMode ? (
               <span className="cursive name">{guest.name}</span>
             ) : (
@@ -126,14 +135,14 @@ const Invitation = props => {
               </React.Fragment>
             )}
             {!isEditMode ? (
-              guest.allergies && (
-                <h5>
+              guest.allergy && (
+                <h5 className="allergy no-top-margin small-padding">
                   Food allergy:
                   <strong>{guest.allergy}</strong>
                 </h5>
               )
             ) : (
-              (guest.allergies || guest.allergies === '') && (
+              (guest.allergy || guest.allergy === '') && (
                 <h5 className="no-top-margin small-padding">
                   Food allergy:
                   <input
@@ -145,12 +154,17 @@ const Invitation = props => {
                 </h5>
               )
             )}
-          </p>
+          </div>
         ))}
       </div>
       {!isEditMode ? (
         <div className="allergies">
-          {allergiesFalsy && <h5>✅ No Food Allergies</h5>}
+          {allergiesFalsy && (
+            <h5>
+              ✅ No Food Allergies&nbsp;
+              (<A onClick={editAllergies}>edit</A>)
+            </h5>
+          )}
         </div>
       ) : (
         <div className="allergies">
@@ -195,7 +209,7 @@ const Invitation = props => {
       <div className="footer">
         {!isEditMode ? (
           <p>
-            Need to change something? <EditButton />
+            Need to change something? <EditButton>Edit Details</EditButton>
           </p>
         ) : (
           <p>
@@ -221,6 +235,7 @@ Invitation.propTypes = {
     message: PropTypes.string
   }),
   isEditMode: PropTypes.bool,
+  setEditMode: PropTypes.func,
   EditButton: PropTypes.func,
   DoneEditingButton: PropTypes.func,
   addGuest: PropTypes.func,

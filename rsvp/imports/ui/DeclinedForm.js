@@ -6,11 +6,11 @@ import A from './PreventDefault';
 import fragments from './fragments';
 
 const DeclinedForm = props => {
-  const undo = <A onClick={props.undoResponse}>Undo</A>;
+  const UndoButton = () => <A onClick={props.undoResponse}>Undo</A>;
   return (
     <div>
       <p>
-        You've declined. 😢 Are you sure? {undo}
+        You've declined. 😢 Are you sure? <UndoButton />
       </p>
       <h2 className="cursive no-bottom-margin">Thank You!</h2>
       <h3 className="no-top-margin small-padding">We're sorry to hear you can't make it!</h3>

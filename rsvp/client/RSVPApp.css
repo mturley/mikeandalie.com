@@ -342,12 +342,20 @@ p.extra-bottom-margin {
   opacity: 0.2;
 }
 
+.guest-name-plate {
+  margin: 15px;
+}
+
 input.guest-allergy {
   margin-left: 10px;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   padding: 5px;
   font-weight: bold;
+}
+
+h5.allergy strong {
+  margin-left: 2px;
 }
 
 input.guest-allergy::placeholder {

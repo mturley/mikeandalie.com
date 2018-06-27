@@ -13,84 +13,68 @@ const daysLeft = () => {
   return Math.round(Math.abs((diffMillis) / (ONE_DAY)));
 };
 
-class AcceptedForm extends React.Component {
-  constructor() {
-    super();
-    this.state = { isEditMode: false };
-    this.toggleEditMode = this.toggleEditMode.bind(this);
-  }
+const AcceptedForm = props => {
+  const { isEditMode, setEditMode, undoResponse } = props;
 
-  toggleEditMode() {
-    const { isEditMode } = this.state;
-    this.setState({ isEditMode: !isEditMode });
-  }
+  const toggleEditMode = () => setEditMode(!isEditMode);
 
-  render() {
-    const { undoResponse } = this.props;
-    const { isEditMode } = this.state;
+  const UndoButton = () => <A onClick={undoResponse}>Undo</A>;
+  const EditButton = buttonProps =>
+    <A onClick={toggleEditMode}>{buttonProps.children || 'Edit'}</A>;
+  const DoneEditingButton = props => (
+    <span>
+      Done Editing?&nbsp;
+      <A onClick={toggleEditMode}>{buttonProps.children || 'Save Changes'}</A>
+    </span>
+  );
 
-    const undoButton = <A onClick={undoResponse}>Undo</A>;
+  return (
+    <div className="post-response-form">
+      {!isEditMode && (
+        <div>
+          <p>
+            Your response is confirmed! 🎉<br />
+            We think you just made a great decision. <UndoButton />
+          </p>
 
-    const EditButton = props =>
-      <A onClick={this.toggleEditMode}>{props.children || 'Edit'}</A>;
-    const DoneEditingButton = props =>
-      <A onClick={this.toggleEditMode}>{props.children || 'Done Editing'}</A>;
+          <h2 className="cursive no-bottom-margin">Thank You! 😍</h2>
+        </div>
+      )}
 
-    const todo = (a1, a2) => console.log('TODO: Meteor.call for updating the database', a1, a2);
-    const updateInvitation = todo;
-    const addGuest = todo;
-    const removeGuest = todo;
-    const updateGuest = todo;
-
-    return (
-      <div className="post-response-form">
-        {!isEditMode && (
-          <div>
-            <p>
-              Your response is confirmed! 🎉<br />
-              We think you just made a great decision. {undoButton}
-            </p>
-
-            <h2 className="cursive no-bottom-margin">Thank You! 😍</h2>
-          </div>
-        )}
-
-        <Invitation {...this.props} {...{
-          isEditMode,
+      <Invitation
+        {...props}
+        {...{
           EditButton,
-          DoneEditingButton,
-          updateInvitation,
-          addGuest,
-          removeGuest,
-          updateGuest
-        }} />
+          DoneEditingButton
+        }}
+      />
 
-        {!isEditMode && (
-          <div>
-            <fragments.AllSet className="no-bottom-margin" />
-            <h3 className="no-top-margin">
-              See you in <a href="/" className="no-underline">
-                {daysLeft()} days! 🗓️
-              </a>
-            </h3>
-            <p className="extra-side-margins">
-              If you need to change your information, you can return to this page at any time before July 25th.
-            </p>
-            <fragments.EnjoyTheGallery />
-            <p className="no-bottom-margin">
-              <small>We can't wait. See you there!</small>
-            </p>
-            <fragments.MikeHeartAlie className="no-top-margin" />
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+      {!isEditMode && (
+        <div>
+          <fragments.AllSet className="no-bottom-margin" />
+          <h3 className="no-top-margin">
+            See you in <a href="/" className="no-underline">
+              {daysLeft()} days! 🗓️
+            </a>
+          </h3>
+          <p className="extra-side-margins">
+            If you need to change your information, you can return to this page at any time before July 25th.
+          </p>
+          <fragments.EnjoyTheGallery />
+          <p className="no-bottom-margin">
+            <small>We can't wait. See you there!</small>
+          </p>
+          <fragments.MikeHeartAlie className="no-top-margin" />
+        </div>
+      )}
+    </div>
+  );
+};
 
 AcceptedForm.propTypes = {
   ...Invitation.propTypes,
-  undoResponse: PropTypes.func,
+  isEditMode: PropTypes.bool,
+  undoResponse: PropTypes.func
 };
 
 export default AcceptedForm;

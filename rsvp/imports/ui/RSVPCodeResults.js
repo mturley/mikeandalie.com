@@ -13,14 +13,19 @@ const RSVPCodeResults = props => {
     ready,
     luggage,
     matchingInvitation,
-    response
+    response,
+    db
   } = props;
-  const onAcceptClick = event => props.onAcceptClick(event, matchingInvitation);
-  const onDeclineClick = event => props.onDeclineClick(event, matchingInvitation);
+
   const formProps = {
-    undoResponse: () => props.undoResponse(matchingInvitation),
-    invitation: matchingInvitation
+    ...props,
+    undoResponse: () => db.undoResponse(matchingInvitation),
+    invitation: matchingInvitation,
   };
+
+  const onAcceptClick = event => db.accept(event, matchingInvitation);
+  const onDeclineClick = event => db.decline(event, matchingInvitation);
+  
   return (
     <React.Fragment>
       <div className={cx('code-footer', { visible: !ready })}>
@@ -68,7 +73,9 @@ RSVPCodeResults.propTypes = {
   matchingInvitation: PropTypes.object, // straight from mongoDB
   onAcceptClick: PropTypes.func,
   onDeclineClick: PropTypes.func,
-  undoResponse: PropTypes.func,
+  db: PropTypes.shape({
+    undoResponse: PropTypes.func
+  }),
   response: PropTypes.oneOf([false, 'accept', 'decline']),
 };
 
