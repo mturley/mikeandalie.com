@@ -56,7 +56,7 @@ const AcceptedForm = props => {
           <fragments.AllSet className="no-bottom-margin" />
           <h3 className="no-top-margin">
             See you in <a href="/" className="no-underline">
-              {daysLeft()} days! 🗓️
+              {daysLeft()} days! 🕑
             </a>
           </h3>
           <p className="extra-side-margins">
