@@ -178,7 +178,7 @@ const Invitation = props => {
           </div>
         ))}
         {isEditMode && (
-          <p class="small">
+          <p className="small">
             +&nbsp;
             <A className="add-guest" onClick={onAddGuestClick}>
               Add a Guest
