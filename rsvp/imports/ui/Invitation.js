@@ -171,7 +171,7 @@ const Invitation = props => {
                   <input
                     className="guest-allergy"
                     placeholder="Please specify"
-                    value={guest.allergy}
+                    value={guest.allergy || ''}
                     onChange={event => onGuestAllergyChange(index, event)}
                   />
                 </h5>

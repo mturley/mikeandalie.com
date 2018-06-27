@@ -27,7 +27,6 @@ Meteor.methods({
       if (i === index) return newGuest;
       return guest;
     });
-    console.log('updating guests: ', updatedGuests);
     Invitations.update(
       { _id: invitation._id },
       { $set: { guests: updatedGuests } }
