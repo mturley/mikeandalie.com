@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import A from './PreventDefault';
 
 const DEBUG_MODE = false;
+
 // TODO put me in some react-helpers thing?
 const json2jsx = json => JSON
   .stringify(json, null, 4)
@@ -25,11 +26,10 @@ const Invitation = props => {
 
   const guests = invitation.guests || [];
   const plural = guests.length > 1;
-  const noAllergies = invitation.guests.every(guest => !guest.hasAllergies);
 
-  const toggleAllergies = () => {
-    updateInvitation(); // TODO
-  };
+  const nil = prop => prop === undefined || prop === null;
+  const allergiesOff = invitation.guests.every(guest => nil(guest.allergy));
+  const allergiesFalsy = invitation.guests.every(guest => !guest.allergy);
 
   const onGuestNameChange = (index, event) => {
     const { target: { value } } = event;
@@ -41,6 +41,15 @@ const Invitation = props => {
     updateGuest(index, { allergy: value });
   }
 
+  const toggleAllergies = () => {
+    updateInvitation({
+      guests: invitation.guests.map(guest => ({
+        ...guest,
+        allergy: allergiesOff ? '' : null
+      }))
+    });
+  };
+
   const onCommentChange = event => {
     const { target: { value } } = event;
     console.log('TODO: save the real value', value);
@@ -50,7 +59,7 @@ const Invitation = props => {
   const RemoveGuestButton = buttonProps => (
     <A
       className="remove-button"
-      onClick={() => removeGuest(buttonProps.guest)}
+      onClick={() => removeGuest(buttonProps.index)}
     >
       ❌
     </A>
@@ -113,14 +122,14 @@ const Invitation = props => {
                   value={guest.name}
                   onChange={event => onGuestNameChange(index, event)}
                 />
-                <RemoveGuestButton guest={guest} />
+                <RemoveGuestButton index={index} />
               </React.Fragment>
             )}
             {!isEditMode ? (
               guest.allergies && (
                 <h5>
                   Food allergy:
-                  <strong>{guest.allergies}</strong>
+                  <strong>{guest.allergy}</strong>
                 </h5>
               )
             ) : (
@@ -141,7 +150,7 @@ const Invitation = props => {
       </div>
       {!isEditMode ? (
         <div className="allergies">
-          {noAllergies && <h5>✅ No Food Allergies</h5>}
+          {allergiesFalsy && <h5>✅ No Food Allergies</h5>}
         </div>
       ) : (
         <div className="allergies">
@@ -151,7 +160,7 @@ const Invitation = props => {
               type="checkbox"
               className="food-allergies"
               value="food-allergies"
-              checked={!noAllergies}
+              checked={!allergiesOff}
               onChange={toggleAllergies}
             />
           </h5>

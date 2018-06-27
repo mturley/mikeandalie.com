@@ -36,7 +36,7 @@ class AcceptedForm extends React.Component {
     const DoneEditingButton = props =>
       <A onClick={this.toggleEditMode}>{props.children || 'Done Editing'}</A>;
 
-    const todo = () => console.log('TODO: Meteor.call for updating the database', arguments);
+    const todo = (a1, a2) => console.log('TODO: Meteor.call for updating the database', a1, a2);
     const updateInvitation = todo;
     const addGuest = todo;
     const removeGuest = todo;
