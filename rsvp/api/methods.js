@@ -2,9 +2,10 @@ import { Invitations } from '../imports/api/invitations.js';
 
 Meteor.methods({
   'invitations.setResponse'({ rsvpCode, response }) {
+    const responseTime = new Date().toISOString();
     Invitations.update(
       { rsvpCode: parseInt(rsvpCode, 10) },
-      { $set: { response } }
+      { $set: { response, responseTime } }
     );
   },
 
