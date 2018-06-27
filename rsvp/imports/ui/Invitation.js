@@ -161,8 +161,8 @@ const Invitation = props => {
         <div className="allergies">
           {allergiesFalsy && (
             <h5>
-              Food Allergies: None&nbsp;
-              (<A onClick={editAllergies}>edit</A>)
+              Food Allergies:&nbsp;
+              <A onClick={editAllergies}>None</A>
             </h5>
           )}
         </div>
@@ -183,13 +183,13 @@ const Invitation = props => {
       {!isEditMode ? (
         <div className="comment-box">
           <h4 className="no-bottom-margin">
-            Comments for guestbook:<br />
+            <small>Comments for guestbook:</small><br />
             {invitation.comment || <EditButton>Leave a Comment</EditButton>}
           </h4>
         </div>
       ) : (
         <div className="comment-box">
-          <p className="small no-bottom-margin">
+          <p className="small no-bottom-margin extra-side-margins">
             Any comments you would like to share in our guestbook?<br />
             (optional, visible to other guests)
           </p>
@@ -209,7 +209,7 @@ const Invitation = props => {
       <div className="footer">
         {!isEditMode ? (
           <p>
-            Need to change something? <EditButton>Edit Details</EditButton>
+            Need to change something? <EditButton>Edit&nbsp;Details</EditButton>
           </p>
         ) : (
           <p>
@@ -230,7 +230,7 @@ Invitation.propTypes = {
       name: PropTypes.string,
       allergy: PropTypes.string
     })),
-    message: PropTypes.string
+    comment: PropTypes.string
   }),
   isEditMode: PropTypes.bool,
   setEditMode: PropTypes.func,

@@ -104,8 +104,12 @@
     margin-left: 274px;
   }
   .envelope .header h3 {
-    margin-top: 14px;
+    margin-top: 8px;
     margin-left: 40px;
     margin-right: 40px;
+  }
+  .envelope .footer p {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
