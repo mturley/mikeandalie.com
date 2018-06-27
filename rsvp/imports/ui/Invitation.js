@@ -19,13 +19,8 @@ const Invitation = props => {
     setEditMode,
     EditButton,
     DoneEditingButton,
-    updateInvitation,
-    addGuest,
-    removeGuest,
-    updateGuest
+    db
   } = props;
-
-  console.log('INVITATION PROPS', props);
 
   const guests = invitation && invitation.guests || [];
   const plural = guests.length > 1;
@@ -34,18 +29,20 @@ const Invitation = props => {
   const allergiesOff = invitation.guests.every(guest => nil(guest.allergy));
   const allergiesFalsy = invitation.guests.every(guest => !guest.allergy);
 
+  const onNameClick = () => setEditMode(true);
+
   const onGuestNameChange = (index, event) => {
     const { target: { value } } = event;
-    updateGuest(index, { name: value });
+    db.updateGuest(invitation, index, { name: value });
   };
 
   const onGuestAllergyChange = (index, event) => {
     const { target: { value } } = event;
-    updateGuest(index, { allergy: value });
+    db.updateGuest(invitation, index, { allergy: value });
   }
 
   const toggleAllergies = () => {
-    updateInvitation({
+    db.updateInvitation(invitation, {
       guests: invitation.guests.map(guest => ({
         ...guest,
         allergy: allergiesOff ? '' : null
@@ -62,13 +59,13 @@ const Invitation = props => {
   const onCommentChange = event => {
     const { target: { value } } = event;
     console.log('TODO: save the real value', value);
-    updateInvitation({ comment: value });
+    db.updateInvitation(invitation, { comment: value });
   };
 
   const RemoveGuestButton = buttonProps => (
     <A
       className="remove-button"
-      onClick={() => removeGuest(buttonProps.index)}
+      onClick={() => db.removeGuest(invitation, buttonProps.index)}
     >
       ❌
     </A>
@@ -99,15 +96,16 @@ const Invitation = props => {
         <div className="guest-count">
           <p className="emoji">
             {guests.map(guest => (
-              <React.Fragment key={guest.name}>
+              <span key={guest.name}>
                 🍽️
-              </React.Fragment>
+              </span>
             ))}
           </p>
           <p className="number">
-            {guests.length} guests
+            {guests.length}&nbsp;
+            {plural ? 'guests' : 'guest'}
             {isEditMode && (
-              <A className="add-guest" onClick={addGuest}>
+              <A className="add-guest" onClick={db.addGuest}>
                 Add a Guest
               </A>
             )}
@@ -123,7 +121,9 @@ const Invitation = props => {
         {guests.map((guest, index) => (
           <div className="guest-name-plate" key={guest.name}>
             {!isEditMode ? (
-              <span className="cursive name">{guest.name}</span>
+              <A className="cursive name" onClick={onNameClick}>
+                {guest.name}
+              </A>
             ) : (
               <React.Fragment>
                 <input
@@ -161,7 +161,7 @@ const Invitation = props => {
         <div className="allergies">
           {allergiesFalsy && (
             <h5>
-              ✅ No Food Allergies&nbsp;
+              Food Allergies: None&nbsp;
               (<A onClick={editAllergies}>edit</A>)
             </h5>
           )}
@@ -169,7 +169,7 @@ const Invitation = props => {
       ) : (
         <div className="allergies">
           <h5>
-            Check this box if anyone in your party has a food allergy:&nbsp;
+            Does anyone in your party has a food allergy?&nbsp;
             <input
               type="checkbox"
               className="food-allergies"
@@ -228,9 +228,7 @@ Invitation.propTypes = {
     numGuestsInvited: PropTypes.number,
     guests: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
-      glutenFree: PropTypes.bool,
-      dairyFree: PropTypes.bool,
-      other: PropTypes.string
+      allergy: PropTypes.string
     })),
     message: PropTypes.string
   }),
@@ -238,9 +236,11 @@ Invitation.propTypes = {
   setEditMode: PropTypes.func,
   EditButton: PropTypes.func,
   DoneEditingButton: PropTypes.func,
-  addGuest: PropTypes.func,
-  updateGuest: PropTypes.func,
-  removeGuest: PropTypes.func
+  db: PropTypes.shape({
+    addGuest: PropTypes.func,
+    updateGuest: PropTypes.func,
+    removeGuest: PropTypes.func
+  })
 };
 
 export default Invitation;

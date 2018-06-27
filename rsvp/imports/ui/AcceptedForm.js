@@ -21,7 +21,7 @@ const AcceptedForm = props => {
   const UndoButton = () => <A onClick={undoResponse}>Undo</A>;
   const EditButton = buttonProps =>
     <A onClick={toggleEditMode}>{buttonProps.children || 'Edit'}</A>;
-  const DoneEditingButton = props => (
+  const DoneEditingButton = buttonProps => (
     <span>
       Done Editing?&nbsp;
       <A onClick={toggleEditMode}>{buttonProps.children || 'Save Changes'}</A>
@@ -73,6 +73,7 @@ const AcceptedForm = props => {
 
 AcceptedForm.propTypes = {
   ...Invitation.propTypes,
+  invitation: PropTypes.object,
   isEditMode: PropTypes.bool,
   undoResponse: PropTypes.func
 };

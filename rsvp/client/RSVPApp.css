@@ -78,7 +78,14 @@ section.spacer {
 }
 
 .code-container .code-form {
+  border: 2px solid transparent;
+  transition: all 0.5s;
+  margin-top: -50px;
+}
+
+.code-container .code-form.border {
   border: 2px solid white;
+  margin-top: 0;
 }
 
 .fancy-parentheses {
@@ -266,6 +273,10 @@ p.extra-bottom-margin {
   margin-bottom: 0;
 }
 
+.guest-count .emoji span {
+  margin: 0 5px;
+}
+
 .guest-count .number {
   font-size: 24px;
   font-weight: bold;
@@ -305,6 +316,14 @@ p.extra-bottom-margin {
   border: 1px dashed black;
   width: 250px;
   display: inline-block;
+  cursor: text;
+  color: #808080;
+  text-decoration: none;
+}
+
+.envelope .cursive.name:hover {
+  background: rgba(255,255,255,0.5);
+  color: black;
 }
 
 .envelope.edit-mode input.guest-name {

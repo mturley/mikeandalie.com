@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Invitations } from '../api/invitations.js';
 
 import RSVPCodeResults from './RSVPCodeResults';
+import FormBody from './FormBody';
 
 const ENABLED = true;
 
@@ -74,32 +75,37 @@ class RSVPApp extends Component {
   }
 
   render() {
-    const { acceptedInvitations, response } = this.props;
-    const { code, ready, isEditMode } = this.derivedState();
+    const { acceptedInvitations, matchingInvitation, response } = this.props;
+    const { code, ready } = this.derivedState();
 
     if (ready) {
       this._codeInput && this._codeInput.blur();
     }
 
     const numConfirmedGuests = acceptedInvitations.reduce(
-      (sum, invitation) => sum + invitation.numGuestsAttending,
+      (sum, invitation) => sum + invitation.guests.length,
       0
     );
 
     const todo = (a1, a2) => console.log('TODO: Meteor.call for updating the database', a1, a2);
-    const db = {
-      accept: this.accept,
-      decline: this.decline,
-      undoResponse: this.undoResponse,
-      updateInvitation: todo,
-      addGuest: todo,
-      removeGuest: todo,
-      updateGuest: todo,
+    const descendantProps = {
+      ...this.props,
+      ...this.derivedState(),
+      db: {
+        accept: this.accept,
+        decline: this.decline,
+        undoResponse: this.undoResponse,
+        updateInvitation: todo,
+        addGuest: todo,
+        removeGuest: todo,
+        updateGuest: todo,
+      },
+      setEditMode: this.setEditMode
     };
 
     const rsvpCodeInput = (
       <div className="code-container">
-        <div className={cx('code-form', { 'edit-mode': isEditMode })}>
+        <div className={cx('code-form', { 'border': !response })}>
           <p className={cx('code-header', { visible: !ready })}>
             Enter&nbsp;the&nbsp;4-digit&nbsp;code
             found&nbsp;on&nbsp;your&nbsp;RSVP&nbsp;card:
@@ -118,13 +124,9 @@ class RSVPApp extends Component {
               ref={r => this._codeInput = r}
             />
           </div>
-          <RSVPCodeResults
-            {...this.props}
-            {...this.derivedState()}
-            db={db}
-            setEditMode={this.setEditMode}
-          />
+          <RSVPCodeResults {...descendantProps} />
         </div>
+        <FormBody {...descendantProps} />
       </div>
     );
 
@@ -171,5 +173,5 @@ RSVPApp.propTypes = {
 };
 
 export default withTracker(() => ({
-  acceptedInvitations: Invitations.find({ accepted: true }).fetch()
+  acceptedInvitations: Invitations.find({ response: 'accept' }).fetch()
 }))(RSVPApp);
