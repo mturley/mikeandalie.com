@@ -23,8 +23,9 @@ Meteor.methods({
   },
 
   'invitations.guests.update'({ invitation, index, newGuest }) {
+    const updatedGuest = { ...invitation.guests[index], ...newGuest };
     const updatedGuests = invitation.guests.map((guest, i) => {
-      if (i === index) return newGuest;
+      if (i === index) return updatedGuest;
       return guest;
     });
     Invitations.update(

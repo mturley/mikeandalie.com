@@ -150,7 +150,7 @@ const Invitation = props => {
               <React.Fragment>
                 <input
                   className="guest-name"
-                  value={guest.name}
+                  value={guest.name || ''}
                   placeholder="Guest Name"
                   onChange={event => onGuestNameChange(index, event)}
                 />
