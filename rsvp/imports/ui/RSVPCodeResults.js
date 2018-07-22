@@ -26,7 +26,7 @@ const RSVPCodeResults = props => {
         {!luggage ? (
           <p>
             {/*<a className="no-code" href="/no-code">Lost your code? Love filling out forms?</a>*/}
-            <A className="no-code" onClick={() => alert('Hmm... Mike didn\'t finish this part yet... you might want to call him. Try your code though, that is working great!')}>Lost your code? Love filling out forms?</A>
+            <A className="no-code" onClick={() => alert('If you have trouble with the RSVP code, you may also email your RSVP to rsvp@mikeandalie.com')}>Lost your code? Click here.</A>
           </p>
         ) : (
           <p className="luggage">Hey, that's the combination on my luggage!</p>
