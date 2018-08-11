@@ -63,9 +63,11 @@ class Countdown extends React.Component {
       <section className="updates">
         <h3>Please Note:</h3>
         <ul>
-          <li>
-            Please do not take photos with smartphones during the ceremony.
-          </li>
+          {beforeCocktailHourStart && (
+            <li>
+              Please do not take photos with smartphones during the ceremony.
+            </li>
+          )}
           <li>
             <strong>Uber and Lyft are available</strong> in the area for rides back to your hotel. Please drink responsibly!
           </li>
