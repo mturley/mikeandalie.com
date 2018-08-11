@@ -56,7 +56,7 @@ s
         <RSVP ref={r => this._refs.rsvpSection = r} />
         <Memories
           ref={r => this._refs.memoriesSection = r}
-          scrollToGallery={() => this.scrollToRef('memoriesSection')}
+          scrollToRef={this.scrollToRef}
         />
 
       </React.Fragment>

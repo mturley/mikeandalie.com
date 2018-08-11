@@ -5,16 +5,15 @@ import photos from '../photos';
 
 class Memories extends React.Component {
   render() {
-    const { scrollToGallery } = this.props;
+    const { scrollToRef } = this.props;
     return (
       <div
         className="fullscreen minus-thumbnails gallery-container"
-        ref={r => this._galleryContainer = r}
       >
         <ImageGallery
           items={photos}
           slideInterval={5000}
-          onThumbnailClick={scrollToGallery}
+          onThumbnailClick={this.props.scrollToRef('memoriesSection')}
           autoPlay
         />
       </div>
@@ -23,11 +22,7 @@ class Memories extends React.Component {
 }
 
 Memories.propTypes = {
-  scrollToGallery: PropTypes.func
-};
-
-Memories.defaultProps = {
-  scrollToGallery: () => {}
+  scrollToRef: PropTypes.func,
 };
 
 export default Memories;
