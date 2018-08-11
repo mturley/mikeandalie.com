@@ -12,7 +12,7 @@ h1 {
   min-width: 150px;
 }
 
-h2, h3, h4, h5, h6, p, .back-to-top a {
+h2, h3, h4, h5, h6, p, li, .back-to-top a {
   font-family: 'Raleway', sans-serif;
   font-weight: normal;
 }
@@ -93,8 +93,8 @@ p.small {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  
-  h2 { 
+
+  h2 {
     font-size: 22px;
   }
 

@@ -69,7 +69,7 @@ class Countdown extends React.Component {
             </li>
           )}
           <li>
-            <strong>Uber and Lyft are available</strong> in the area for rides back to your hotel. Please drink responsibly!
+            <strong>Uber and Lyft are available in the area</strong> for rides back to your hotel. Please drink responsibly!
           </li>
         </ul>
       </section>
