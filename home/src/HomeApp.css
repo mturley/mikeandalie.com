@@ -240,18 +240,19 @@ body, html {
   text-align: left;
   border: 2px dashed rgba(255,255,255,0.5);
   margin: -10px 20px 20px 20px;
+  display: inline-block;
 }
 
 .updates h3 {
   border-bottom: 2px dashed rgba(255,255,255,0.5);
-  margin: 0;
+  margin: auto;
   padding: 8px 20px;
   font-weight: bold;
 }
 
 .updates li {
   text-align: left;
-  margin: 5px;
+  margin: 5px 15px;
 }
 
 @media (max-width: 768px) {
