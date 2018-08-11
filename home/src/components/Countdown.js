@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import countdown from '../vendor/countdown';
 
-import { CEREMONY_START_TIME, RECEPTION_START_TIME, MORNING_AFTER_TIME } from './times';
-// TODO Please do not use smart phones during the ceremony message, but only within some time of the ceremony?
+import {
+  WAGON_START_TIME,
+  CEREMONY_START_TIME,
+  COCKTAIL_HOUR_START_TIME,
+  RECEPTION_START_TIME,
+  MORNING_AFTER_TIME
+} from './times';
 
 const countdownUnits =
   countdown.DAYS |
@@ -47,16 +52,24 @@ class Countdown extends React.Component {
       days, hours, minutes, seconds
     } = this.state;
 
-    console.log('DAYS', days);
-
     const now = new Date().getTime();
+    const beforeWagonStart = now < WAGON_START_TIME.getTime();
     const beforeCeremonyStart = now < CEREMONY_START_TIME.getTime();
+    const beforeCocktailHourStart = now < COCKTAIL_HOUR_START_TIME.getTime();
     const beforeReceptionStart = now < RECEPTION_START_TIME.getTime();
     const beforeMorningAfter = now < MORNING_AFTER_TIME.getTime();
 
     const updatesSection = beforeMorningAfter ? (
-      <section>
-        <h1>TODO: updates go here</h1>
+      <section className="updates">
+        <h3>Please Note:</h3>
+        <ul>
+          <li>
+            Please do not take photos with smartphones during the ceremony.
+          </li>
+          <li>
+            <strong>Uber and Lyft are available</strong> in the area for rides back to your hotel. Please drink responsibly!
+          </li>
+        </ul>
       </section>
     ) : null;
 
@@ -78,22 +91,21 @@ class Countdown extends React.Component {
     );
 
     const mainSection = (() => {
-      if (beforeCeremonyStart) return (
-        <section>
-          <p>
-            Wagon rides to ceremony begin at 2:30 PM:
-          </p>
-          {countdownClock}
-          {dateFooter}
-        </section>
-      );
-
       if (beforeReceptionStart) return (
         <section>
-          <p>
-            The reception begins at 5:30 PM:
-          </p>
-          {countdownClock}
+          {beforeWagonStart && (
+            <p>Wagon rides begin at 2:30 PM.</p>
+          )}
+          {beforeCeremonyStart && (
+            <React.Fragment>
+              <p>The ceremony begins at 3:00 PM:</p>
+              {countdownClock}
+            </React.Fragment>
+          )}
+          {beforeCocktailHourStart && (
+            <p>Cocktail hour begins at 3:30 PM.</p>
+          )}
+          <p>The reception begins at 4:30 PM.</p>
           {dateFooter}
         </section>
       );
@@ -101,9 +113,10 @@ class Countdown extends React.Component {
       return (
         <section>
           <h2 className="cursive">
-            💑 💐 Just Married 🔔 🎉
+            💐 Just Married 🎉
           </h2>
           {dateFooter}
+          <br /><br />
           <p>
             <strong>
               If you have photos from the event to share,

@@ -235,6 +235,25 @@ body, html {
   object-fit: contain;
 }
 
+.updates {
+  border-top: none;
+  text-align: left;
+  border: 2px dashed rgba(255,255,255,0.5);
+  margin: -10px 20px 20px 20px;
+}
+
+.updates h3 {
+  border-bottom: 2px dashed rgba(255,255,255,0.5);
+  margin: 0;
+  padding: 8px 20px;
+  font-weight: bold;
+}
+
+.updates li {
+  text-align: left;
+  margin: 5px;
+}
+
 @media (max-width: 768px) {
   .fullscreen {
     min-height: calc(100vh - 64px);
@@ -249,7 +268,7 @@ body, html {
     padding-bottom: 15px;
     bottom: 0;
   }
-  
+
   .main-links:hover a.scroll-arrow,
   .main-links:hover .anchors:not(:hover) a.details,
   .main-links a:hover {
