@@ -12,11 +12,6 @@ const Home = props => (
       <div className="main wrapper clearfix">
         <article>
           {props.children}
-          <section>
-            <p>
-              August 25th, 2018 &nbsp;|&nbsp; Sturbridge, MA
-            </p>
-          </section>
           <section className="main-links">
             <a
               className="scroll-arrow"

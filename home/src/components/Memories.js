@@ -5,7 +5,6 @@ import photos from '../photos';
 
 class Memories extends React.Component {
   render() {
-    const { scrollToRef } = this.props;
     return (
       <div
         className="fullscreen minus-thumbnails gallery-container"

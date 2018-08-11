@@ -29,7 +29,7 @@ class HomeApp extends Component {
       });
     };
   }
-s
+
   render() {
     return (
       <React.Fragment>
