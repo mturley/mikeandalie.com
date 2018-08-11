@@ -181,17 +181,18 @@ class RSVPApp extends Component {
             <span>Mike &amp; Alie</span>
           </a>
           <h1>RSVP</h1>
-          <h3>{numConfirmedGuests} confirmed guests</h3>
+          <h3>115 confirmed guests</h3>
         </header>
         <section className="main-content">
-          {ENABLED ? rsvpCodeInput : (
-            <React.Fragment>
-              <p>Aw jeez. I sent the invitations out yesterday, but I'm still finishing up this website.</p>
-              <h3>Trust me, it's cute, you'll love it. Come back in a few hours. ❤️</h3>
-              <p>Please contact Mike or Alie to RSVP, or wait for this page to come back.</p>
-              <p>Any minute now, I promise.. Love you Alie...</p>
-            </React.Fragment>
-          )}
+          <h2>The RSVP form is now closed.</h2>
+          <p>
+            If you need to update Mike &amp; Alie about your attendance,
+            please email us at <a href="mailto:rsvp@mikeandalie.com">rsvp@mikeandalie.com</a>.
+            <br /><br />
+            If you would like to leave a note for the guestbook,
+            feel free to email <a href="mailto:us@mikeandalie.com">us@mikeandalie.com</a>.
+          </p>
+          <h2>We hope to see you there! ❤️</h2>
         </section>
         <section className="spacer" />
         <footer>

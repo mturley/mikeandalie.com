@@ -29,15 +29,15 @@ class HomeApp extends Component {
       });
     };
   }
-
+s
   render() {
     return (
       <React.Fragment>
-        
+
         <Home scrollToRef={this.scrollToRef}>
           <Countdown />
         </Home>
-    
+
         <div className="halfscreen photostrip">
           <img src="img/photostrip.jpg" />
         </div>
@@ -54,7 +54,10 @@ class HomeApp extends Component {
         <Venue ref={r => this._refs.venueSection = r} />
         <Registries ref={r => this._refs.registrySection = r} />
         <RSVP ref={r => this._refs.rsvpSection = r} />
-        <Memories ref={r => this._refs.memoriesSection = r} />
+        <Memories
+          ref={r => this._refs.memoriesSection = r}
+          scrollToGallery={() => this.scrollToRef('memoriesSection')}
+        />
 
       </React.Fragment>
     );
