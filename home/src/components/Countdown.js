@@ -59,9 +59,9 @@ class Countdown extends React.Component {
     const beforeReceptionStart = now < RECEPTION_START_TIME.getTime();
     const beforeMorningAfter = now < MORNING_AFTER_TIME.getTime();
 
-    const updatesSection = beforeMorningAfter ? (
+    const updatesSection = (
       <section className="updates">
-        <h3>Please Note:</h3>
+        {beforeMorningAfter && <h3>Please Note:</h3>}
         <ul>
           {beforeCocktailHourStart && (
             <li>
@@ -69,11 +69,17 @@ class Countdown extends React.Component {
             </li>
           )}
           <li>
-            <strong>Uber and Lyft are available in the area</strong> for rides back to your hotel. Please drink responsibly!
+            <strong>Send us your photos of the reception! 📸</strong> We are collecting guest photos
+            at <a href="http://mikeandalie.com/photos">mikeandalie.com/photos</a>.
           </li>
+          {beforeMorningAfter && (
+            <li>
+              <strong>Uber and Lyft are available in the area</strong> for rides back to your hotel. Please drink responsibly!
+            </li>
+          )}
         </ul>
       </section>
-    ) : null;
+    );
 
     const countdownClock = (
       <div id="countdown">
