@@ -8,6 +8,7 @@
     "react-back2top": "^0.1.6",
     "react-dom": "^16.2.0",
     "react-image-gallery": "^0.8.7",
+    "react-router-dom": "^4.3.1",
     "react-scroll-to-component": "^1.0.2",
     "webpack": "^4.12.0"
   },

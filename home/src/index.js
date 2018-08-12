@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomeApp from './HomeApp';
+import HomeRouter from './HomeRouter';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<HomeApp />, document.getElementById('root'));
+ReactDOM.render(<HomeRouter />, document.getElementById('root'));
 registerServiceWorker();

@@ -32,7 +32,7 @@ class HomeApp extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div class="background home">
 
         <Home scrollToRef={this.scrollToRef}>
           <Countdown />
@@ -59,7 +59,7 @@ class HomeApp extends Component {
           scrollToRef={this.scrollToRef}
         />
 
-      </React.Fragment>
+      </div>
     );
   }
 }

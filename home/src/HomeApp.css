@@ -1,12 +1,6 @@
 @import './common/common.css';
 
 html {
-  background: url(img/onthelake-b.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
   min-height: 100%;
 }
 
@@ -14,8 +8,26 @@ body, html {
   height: 100%;
 }
 
-#root {
+#root, .background {
   min-height: 100%;
+}
+
+.background.home {
+  background: url(img/onthelake-b.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.background.photos {
+  background: url(img/hyland-hilltop-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 .fullscreen {
@@ -255,8 +267,12 @@ body, html {
   margin: 5px 15px;
 }
 
+.photos h2 {
+  margin-top: 0;
+}
+
 @media (max-width: 768px) {
-  .fullscreen {
+  .fullscreen.minus-thumbnails {
     min-height: calc(100vh - 64px);
   }
 
@@ -279,4 +295,12 @@ body, html {
   .image-gallery-image img {
     height: calc(100vh - 64px)
   }
+}
+
+
+#gdwidget-upload-slot-07cdfd2337 {
+  margin: 10px auto; width:90%; border:1px solid #aaa;
+  cursor: pointer; text-align: center; font-family: arial; font-weight: bold;
+  padding: 40px;
+  background: #fff;
 }
