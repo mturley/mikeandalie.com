@@ -299,9 +299,13 @@ body, html {
 
 
 #gdwidget-upload-slot-07cdfd2337 {
-  margin: 10px auto; width:90%;
-  cursor: pointer; text-align: center; font-family: arial; font-weight: bold;
+  margin: 10px auto;
+  cursor: pointer; text-align: center; font-weight: bold;
   padding: 40px;
+}
+
+header.back-home {
+  padding: 20px;
 }
 
 header.back-home a {
