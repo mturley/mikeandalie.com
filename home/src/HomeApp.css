@@ -299,8 +299,39 @@ body, html {
 
 
 #gdwidget-upload-slot-07cdfd2337 {
-  margin: 10px auto; width:90%; border:1px solid #aaa;
+  margin: 10px auto; width:90%;
   cursor: pointer; text-align: center; font-family: arial; font-weight: bold;
   padding: 40px;
-  background: #fff;
+}
+
+header.back-home a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  color: white;
+  transition: padding 1s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header.back-home a img, header.back-home a span {
+  vertical-align: middle;
+  padding-right: 8px;
+}
+
+header.back-home a:hover {
+  padding-left: 20px;
+}
+
+header.back-home a:hover span {
+  color: yellow;
+  text-decoration: underline;
+}
+
+header.back-home h1 {
+  margin: 0;
+  padding-top: 10px;
 }

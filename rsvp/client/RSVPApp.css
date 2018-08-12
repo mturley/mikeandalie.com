@@ -46,11 +46,11 @@ header a.back-home img, header a.back-home span {
   padding-right: 8px;
 }
 
-header a:hover {
+header a.back-home:hover {
   padding-left: 20px;
 }
 
-header a:hover span {
+header a.back-home:hover span {
   color: yellow;
   text-decoration: underline;
 }
@@ -442,5 +442,5 @@ input.guest-allergy::placeholder {
 
   .yes-no-buttons button {
     max-width: calc(50% - 30px);
-  } 
+  }
 }
