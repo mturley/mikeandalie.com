@@ -96,18 +96,18 @@ class Countdown extends React.Component {
       if (beforeReceptionStart) return (
         <section>
           {beforeWagonStart && (
-            <p>Wagon rides begin at 3:00 PM.</p>
+            <p>Wagon rides begin at 2:30 PM.</p>
           )}
           {beforeCeremonyStart && (
             <React.Fragment>
-              <p>The ceremony begins at 3:30 PM:</p>
+              <p>The ceremony begins at 3:00 PM:</p>
               {countdownClock}
             </React.Fragment>
           )}
           {beforeCocktailHourStart && (
-            <p>Cocktail hour begins at 4:00 PM.</p>
+            <p>Cocktail hour begins at 3:30 PM.</p>
           )}
-          <p>The reception begins at 5:00 PM.</p>
+          <p>The reception begins at 4:30 PM.</p>
           {dateFooter}
         </section>
       );
