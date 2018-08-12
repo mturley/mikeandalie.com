@@ -60,25 +60,27 @@ class Countdown extends React.Component {
     const beforeMorningAfter = now < MORNING_AFTER_TIME.getTime();
 
     const updatesSection = (
-      <section className="updates">
-        {beforeMorningAfter && <h3>Please Note:</h3>}
-        <ul>
-          {beforeCocktailHourStart && (
-            <li>
-              Please do not take photos with smartphones during the ceremony.
-            </li>
-          )}
-          <li>
-            <strong>Send us your photos of the reception! 📸</strong> We are collecting guest photos
-            at <a href="http://mikeandalie.com/photos">mikeandalie.com/photos</a>.
-          </li>
-          {beforeMorningAfter && (
+      (beforeMorningAfter ? (
+        <section className="updates">
+          <h3>Please Note:</h3>
+          <ul>
+            {beforeCocktailHourStart && (
+              <li>
+                Please do not take photos with smartphones during the ceremony.
+              </li>
+            )}
+            {beforeReceptionStart && (
+              <li>
+                <strong>Send us your photos of the reception! 📸</strong> We are collecting guest photos
+                at <a href="http://mikeandalie.com/photos">mikeandalie.com/photos</a>.
+              </li>
+            )}
             <li>
               <strong>Uber and Lyft are available in the area</strong> for rides back to your hotel. Please drink responsibly!
             </li>
-          )}
-        </ul>
-      </section>
+          </ul>
+        </section>
+      ) : null)
     );
 
     const countdownClock = (
@@ -125,15 +127,17 @@ class Countdown extends React.Component {
           </h2>
           {dateFooter}
           <br /><br />
-          <p>
-            <strong>
-              If you have photos from the event to share,
-              please email them to <a href="mailto:photos@mikeandalie.com">photos@mikeandalie.com</a>!
-            </strong>
-          </p>
-          <p>
-            A collection of professional and guest-submitted photos will be made available at <a href="#" onClick={() => alert('Check back soon! We\'re busy enjoying being married.')}>mikeandalie.com/photos</a> as soon as we get around to it. Check back soon!
-          </p>
+          <div style={{ display: 'inline-block', border: '2px solid white', margin: '0 20px' }}>
+            <p>
+              <strong>
+                If you have photos from the event to share,
+                please email them to <a href="mailto:photos@mikeandalie.com">photos@mikeandalie.com</a>!
+              </strong>
+            </p>
+            <p>
+              A collection of professional and guest-submitted photos will be made available at <a href="#" onClick={() => alert('Check back soon! We\'re busy enjoying being married.')}>mikeandalie.com/photos</a> after the wedding. Check back soon!
+            </p>
+          </div>
         </section>
       );
     })();
