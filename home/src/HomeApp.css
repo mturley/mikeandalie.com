@@ -30,6 +30,18 @@ body, html {
   background-position: center;
 }
 
+.photos-box {
+  display: inline-block;
+  border: 2px solid white;
+  margin: 20px auto;
+}
+
+.photos p.narrow {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .fullscreen {
   min-height: calc(100vh);
   display: flex;
@@ -295,6 +307,14 @@ body, html {
   .image-gallery-image img {
     height: calc(100vh - 64px)
   }
+}
+
+.no-top-margin {
+  margin-top: 0;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0;
 }
 
 

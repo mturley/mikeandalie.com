@@ -1,5 +1,4 @@
 import React from 'react';
-import PhotoUploadWidget from './components/PhotoUploadWidget';
 
 const PhotosApp = () => (
   <div class="fullscreen background photos">
@@ -10,18 +9,25 @@ const PhotosApp = () => (
       </a>
     </header>
     <h1>Wedding Guest Photos</h1>
-    <p className="no-top-margin">
-      If you've taken photos at our wedding, we want to see them and share them!
-    </p>
-    <p>
-      You may either email your photos to <a href="mailto:photos@mikeandalie.com">photos@mikeandalie.com</a> or use the upload tool below.
-    </p>
-    <p>
+    <h3 className="no-top-margin no-bottom-margin">
+      If you've taken photos at our wedding, we want to see them and share them!<br />
+      There are two ways to send us your photos:
+    </h3>
+    <div style={{ margin: 20 }}>
+      <div className="photos-box">
+        <p>
+          Option 1: <strong><a href="https://goo.gl/forms/OJ83CjdPsxMLmwst1">Click here to upload photos directly using our Google form.</a></strong>
+        </p>
+        <p className="no-top-margin">
+          Option 2: Email your photos to <strong><a href="mailto:photos@mikeandalie.com">photos@mikeandalie.com</a></strong>.
+        </p>
+      </div>
+    </div>
+    <p className="narrow">
       We will be placing a gallery of both professional and guest photos here for everyone to enjoy after the wedding.
     </p>
-    <PhotoUploadWidget />
-    <p>
-      Reminder: Please do not take photos with smartphones during the ceremony. Hilltop photos before and after the ceremony are welcome.
+    <p className="narrow">
+      Reminder: <em>Please do not take photos with smartphones during the ceremony.</em> Hilltop photos before and after the ceremony are welcome, and reception photos are encouraged!
     </p>
   </div>
 );
